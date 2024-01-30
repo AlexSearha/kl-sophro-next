@@ -10,7 +10,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 
 export function Header() {
     return (
-    <header className="flex w-full justify-between items-center py-5 px-4 md:py-10 md:px-24">
+    <header className="flex mx-auto justify-between items-center py-5 px-5 max-w-7xl md:py-10 md:px-14 ">
       
       <Link href="/">
         <Image src={Logo} 
@@ -21,7 +21,7 @@ export function Header() {
       
       <div className="flex flex-col">
         <Menu as="div" className="relative inline-block text-left">
-          <button className="inline-flex w-full font-bold justify-center rounded-md bg-greena-400 px-4 py-2 text-sm text-white hover:bg-greena-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+          <button className="inline-flex w-full font-bold justify-center rounded-md transition-colors duration-300 bg-greena-400 px-4 py-2 text-sm text-white hover:bg-greena-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
             <Link href="/dashboard">
               Prendre RDV
             </Link>

@@ -11,12 +11,18 @@ const config: Config = {
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
+      backgroundImage: {
+        'monstera': "url('/feuilles.webp')",
+      },
       colors: {
         greena: {
           400: '#06752e',
           500: '#0e4024',
           600: '#14261c',
         },
+        bgcolor:{
+          400: '#F4F7F4',
+        }
       },
     },
     keyframes: {

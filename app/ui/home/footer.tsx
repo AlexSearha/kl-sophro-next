@@ -10,11 +10,11 @@ export function Footer() {
             <div className="flex flex-col-reverse items-center gap-6 mb-10 md:flex-row">
                 <div className="flex flex-col items-center gap-2 md:w-1/2">
                     <h4 className="text-center">{`Besoin d'un rendez-vous?`}</h4>
-                    <button className="font-bold p-2 max-w-40 bg-greena-400 rounded hover:bg-greena-500 transition-colors duration-300">
+                    <button className="font-bold text-sm p-4 max-w-44 bg-greena-400 rounded hover:bg-greena-500 transition-colors duration-300">
                         <Link href="/dashboard">JE PRENDS LE MIENS</Link>
                     </button>
                 </div>
-                <p className="text-center md:w-1/2">{`"Sophrologue sur Noyal-Muzillac(Peripherie de Vannes), j'accompagne les particuliers et les entreprises en présentiel ou distanciel"`}</p>
+                <p className="text-center italic md:w-1/2">{`"Sophrologue sur Noyal-Muzillac(Peripherie de Vannes), j'accompagne les particuliers et les entreprises en présentiel ou distanciel"`}</p>
             </div>
             <div className="flex flex-col-reverse md:flex-row md:justify-between gap-4">
                 <p className="text-center md:w-1/2">{`© KATIA LEMAIRE SOPHROLOGUE - ${year} | Mentions légales - Politique de confidentialité - CGV`}</p>
@@ -30,7 +30,6 @@ export function Footer() {
                     </Link>
                 </div>
             </div>
-
         </div>
     </footer>
   );
