@@ -1,10 +1,10 @@
-export default function DashboardClient({
-    children, // will be a page or nested layout
+export default function DashboardLayout({
+    children,
   }: {
     children: React.ReactNode
   }) {
     return (
-        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
+        <div className="flex flex-col h-screen md:flex-row md:overflow-hidden">
         <div className="w-full flex-none md:w-64">
           Salut
         </div>

@@ -5,18 +5,19 @@ import photoBrain from "@/public/brain2.webp";
 import photoPlante from "@/public/plantes-600x362.webp";
 import photoFamille from "@/public/famille2.webp";
 import photoArosage from "@/public/businessman.webp";
-import discussion from '@/public/talkaftertherapy.webp'
-import { WindIcon } from "./lib/icons";
-import { SofaIcon } from "./lib/icons";
-import { TalkIcon } from "./lib/icons";
-import { Footer } from "./ui/home/footer";
-import { Header } from "./ui/home/header";
-import { lusitana } from "./ui/fonts";
+import discussion from '@/public/talkaftertherapy.webp';
+import adulteImg from '@/public/adulte_faceless-e1669810596397.webp';
+import adoImg from '@/public/teen-e1669811659157.webp';
+import studentImg from '@/public/Etudiant-e1669810949103.webp';
+import { WindIcon } from "../lib/icons";
+import { SofaIcon } from "../lib/icons";
+import { TalkIcon } from "../lib/icons";
+import { lusitana } from "../ui/fonts";
+import Card from "../ui/home/card";
+import PriceCard from "../ui/home/price-card";
 
 export default function Home() {
   return (
-    <>
-      <Header />
       <main className="flex min-h-screen flex-col grow text-neutral-800">
         {/* Section banner */}
         <section id="home-tree" className="mt-4 px-4 flex justify-center">
@@ -28,7 +29,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* Section qui suis-je */}
+        {/* Section How I am */}
         <section id="who-i-am" className="mx-auto my-16 mx-6">
           <div className="flex flex-col items-center gap-6 max-w-5xl xl:flex-row xl:items-start">
             <Image className="rounded shadow-black shadow-md" src={photoKatia} width={450} height={450} alt="Photo de Katia Lemaire"/>
@@ -59,7 +60,7 @@ export default function Home() {
               la direction et pour développer cette capacité à ramener le calme en soi, le bien-être et l'harmonie.`}
             </p>
         </section>
-        {/* Section La Sophrologie*/}
+        {/* Section The sophrology*/}
         <section className="mx-auto my-16 mx-6 px-4 sm:max-w-2xl xl:max-w-5xl">
           <h2 className={`text-center text-3xl font-bold ${lusitana.className} mb-8`}>{`Qu'est ce que la Sophrologie ?`}</h2>
           <div className="flex flex-col items-center mt-6 xl:gap-20 xl:flex-row sm:gap-4">
@@ -148,62 +149,74 @@ export default function Home() {
             <Image className="rounded mt-6" src={photoArosage} width={350} height={350} alt="Photo de Katia Lemaire"/>
           </div>
         </section>
-        {/* Section deroulement de la séance */}
+
+        {/* Section How a session works? */}
         <section className="bg-monstera bg-no-repeat bg-center bg-cover">
           <div className="w-full h-full flex flex-col justify-center items-center py-6 px-2">
             <h2 className={`${lusitana.className} text-white text-center text-3xl w-3/4`}>Comment se déroule une séance ?</h2>
-            {/*Premiere étape */}
-            <div id="cards" className="flex flex-col flex-wrap items-center text-white mt-8 md:flex-row">
-              <div id="card-container" className="md:w-1/2 xl:w-1/4">
-                <div id="card" className="flex flex-col items-center py-6 px-2 max-h-68 w-60 border-2 bg-black/40 backdrop-blur-sm border-white/25 rounded shadow-black shadow-md">
-                    <h3 className="font-bold text-2xl">- 1 -</h3>
-                    <Image className="mt-4" src={discussion} alt="logo de discution entre le therapeute et le client" height={80} width={80} />
-                    <h4 className={`${lusitana.className} text-greena-400 font-bold text-xl mt-4`}>Échanges</h4>
-                    <p className="mt-4 text-center italic">
-                      {`Nous faisons connaissance ou nous faisons un point sur votre évolution.`}
-                    </p>
-                </div>
-              </div>
-            {/*Deuxième étape */}
-            <div id="card-container" className="md:w-1/2 xl:w-1/4">
-              <div id="card" className="flex flex-col items-center py-6 px-2 max-h-68 w-60 border-2 bg-black/40 backdrop-blur-sm border-white/25 rounded shadow-black shadow-md">
-                <h3 className="font-bold text-2xl">- 2 -</h3>
-                <WindIcon className="w-20 h-20 mt-4" ariaHidden="true" />
-                <h4 className={`${lusitana.className} text-greena-400 text-center font-bold text-xl mt-4`}>Exercices de réspirations</h4>
-                <p className="mt-4 text-center italic">
-                  {`Mouvements doux accompagnés de respirations pour détendre le corps.`}
-                </p>
-              </div>
-            </div>
-
-            {/*Troisieme étape */}
-            <div id="card-container" className="md:w-1/2 xl:w-1/4">
-              <div id="card" className="flex flex-col items-center py-6 px-2 max-h-68 w-60 border-2 bg-black/40 backdrop-blur-sm border-white/25 rounded shadow-black shadow-md">
-                <h3 className="font-bold text-2xl">- 3 -</h3>
-                <SofaIcon className="w-20 h-20 mt-4" ariaHidden="true" />
-                <h4 className={`${lusitana.className} text-greena-400 text-center font-bold text-xl mt-4`}>Lacher prise</h4>
-                <p className="mt-4 text-center italic">
-                  {`Instant de détente et lâcher prise, ou vous vous laissez guider par ma voix.`}
-                </p>
-              </div>
-            </div>
-
-            {/*Quatrieme étape */}
-            <div id="card-container" className="md:w-1/2 xl:w-1/4">
-              <div id="card" className="flex flex-col items-center py-6 px-2 max-h-68 w-60 border-2 bg-black/40 backdrop-blur-sm border-white/25 rounded shadow-black shadow-md">
-                <h3 className="font-bold text-2xl">- 4 -</h3>
-                <TalkIcon className="w-20 h-20 mt-4" ariaHidden="true" />
-                <h4 className={`${lusitana.className} text-greena-400 text-center font-bold text-xl mt-4`}>Partage des ressentis</h4>
-                <p className="mt-4 text-center italic">
-                  {`Instant de détente et lâcher prise, ou vous vous laissez guider par ma voix.`}
-                </p>
-              </div>
-            </div>
+            {/*Fist step */}
+            <div id="cards" className="flex flex-col flex-wrap w-4/5 justify-around items-center text-white my-8 md:flex-row">
+              <Card 
+                title="Échanges" 
+                description="Nous faisons connaissance ou nous faisons un point sur votre évolution." 
+                step={1}
+                staticImage={discussion} 
+                alt="discussion entre le thérapeute et le client" 
+              />
+            {/*Second step */}
+              <Card 
+                title="Exercices de réspirations"
+                description="Mouvements doux accompagnés de respirations pour détendre le corps."
+                step={2}
+                IconImage={<WindIcon className="w-20 h-20 mt-4" aria-hidden="true" />}
+                alt="Icone représentant le vent"
+              />
+            {/*Third step */}
+              <Card 
+                title="Lacher prise"
+                description="Instant de détente et lâcher prise, ou vous vous laissez guider par ma voix."
+                step={3}
+                IconImage={<SofaIcon className="w-20 h-20 mt-4" aria-hidden="true"/>}
+                alt="Icone représentant un canapé"
+              />
+            {/*Fourth step */}
+              <Card 
+                title="Partage des ressentis"
+                description="Instant de détente et lâcher prise, ou vous vous laissez guider par ma voix."
+                step={4}
+                IconImage={<TalkIcon className="w-20 h-20 mt-4" aria-hidden="true"/>}
+                alt="Icone représentant une discussion"
+              />
             </div>
           </div>
         </section>
+
+        {/* Price section */}
+        <section id='price-section' className="mx-auto h-auto w-full my-16 px-4 sm:max-w-2xl xl:max-w-5xl">
+          <div id="price-card-container" className="flex flex-wrap w-full justify-between">
+            <PriceCard 
+              image={adulteImg} 
+              title="Adulte" 
+              price={50} 
+              description="Séance individuelle et/ou collectif de sophrologie" 
+              alt="Image d'un adulte"
+              />
+              <PriceCard 
+              image={adoImg} 
+              title="Adolescent" 
+              price={50} 
+              description="Séance individuelle de sophrologie" 
+              alt="Image d'un adolescent"
+              />
+              <PriceCard 
+              image={studentImg} 
+              title="Étudiant" 
+              price={50} 
+              description="Séance individuelle de sophrologie" 
+              alt="Image d'un adolescent"
+              />
+          </div>
+        </section>
       </main>
-      <Footer />
-    </>
   );
 }
