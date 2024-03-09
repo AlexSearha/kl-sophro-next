@@ -155,7 +155,7 @@ export default function Home() {
           <div className="w-full h-full flex flex-col justify-center items-center py-6 px-2">
             <h2 className={`${lusitana.className} text-white text-center text-3xl w-3/4`}>Comment se déroule une séance ?</h2>
             {/*Fist step */}
-            <div id="cards" className="flex flex-col flex-wrap w-4/5 justify-around items-center text-white my-8 md:flex-row">
+            <div id="cards" className="flex flex-col flex-wrap w-full max-w-6xl justify-around items-center text-white my-8 md:flex-row">
               <Card 
                 title="Échanges" 
                 description="Nous faisons connaissance ou nous faisons un point sur votre évolution." 

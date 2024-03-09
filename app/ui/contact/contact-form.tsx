@@ -1,11 +1,13 @@
 'use client';
 
-import { AlertErrorNotification } from "@/app/ui/alerte-notification";
+import { AlertErrorNotification, AlertSuccessNotification } from "@/app/ui/alerte-notification";
 import { useState } from "react"
 import { lusitana } from "../fonts";
+import { useLazyPostFetchData } from "@/app/lib/hooks";
 
 export default function ContactForm() {
-    const [isFullfilled, setIsFullfilled] = useState<boolean | null>(null)
+    const [isFullfilled, setIsFullfilled] = useState<boolean | null>(null);
+    const {fetchData, isLoading, isError, data} = useLazyPostFetchData();
 
     async function createInvoice(formData: FormData) {
    
@@ -13,13 +15,17 @@ export default function ContactForm() {
         name: formData.get('name'),
         email: formData.get('email'),
         serviceType: formData.get('serviceType'),
+        phone: formData.get('phone'),
         message: formData.get('message'),
       }
+      console.log("rawForm: ",rawFormData);
+      
       
       if(!rawFormData.name || !rawFormData.email || !rawFormData.serviceType || !rawFormData.message) {
         setIsFullfilled(false);
       } else {
         setIsFullfilled(true);
+        fetchData('http://localhost:3001/contact', rawFormData);
       }
     }
    
@@ -27,7 +33,7 @@ export default function ContactForm() {
         <div className="w-full max-w-[500px] px-3 md:w-1/2">
       <form action={createInvoice} className="flex flex-col justify-center bg-white p-6 rounded-xl shadow-xl">
         <div className="mb-4">
-          <label htmlFor="name" className={`${lusitana.className} block font-bold text-xl text-greena-400`}>Nom</label>
+          <label htmlFor="name" className={`${lusitana.className} block font-bold text-xl`}>Nom</label>
           <input
             type="text"
             id="name"
@@ -37,7 +43,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl text-greena-400`}>Email</label>
+          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>Email</label>
           <input
             type="email"
             id="email"
@@ -47,7 +53,18 @@ export default function ContactForm() {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="serviceType" className={`${lusitana.className} block font-bold text-xl text-greena-400`}>Type de prestation</label>
+          <label htmlFor="phone" className={`${lusitana.className} block font-bold text-xl`}>Télephone</label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            maxLength={10}
+            required
+            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="serviceType" className={`${lusitana.className} block font-bold text-xl`}>Type de prestation</label>
           <select
             id="serviceType"
             name="serviceType"
@@ -57,13 +74,14 @@ export default function ContactForm() {
             {/* TODO: changer le background en vert lors de la navigation du select */}
             <option value="">Sélectionnez le type de prestation</option>
             <option className="not-italic" value="adulte">Adulte</option>
-            <option className="not-italic" value="etudiant">Étudiant</option>
+            <option className="not-italic" value="student">Étudiant</option>
             <option className="not-italic" value="adolescent">Adolescent</option>
             <option className="not-italic" value="entreprise">Entreprise</option>
+            <option className="not-italic" value="other">Autre...</option>
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="message" className={`${lusitana.className} block font-bold text-xl text-greena-400`}>Message</label>
+          <label htmlFor="message" className={`${lusitana.className} block font-bold text-xl`}>Message</label>
           <textarea
             id="message"
             name="message"
@@ -73,9 +91,14 @@ export default function ContactForm() {
           ></textarea>
         </div>
         <button type="submit" className="px-4 py-2 bg-greena-400 text-white font-semibold rounded transition-all hover:bg-greena-500 focus:outline-none focus:ring focus:border-greena-400">Envoyer</button>
-        {isFullfilled === false ? 
+        { isError ? 
             <AlertErrorNotification 
                 message="veuillez entrer tous les champs obligatoires" 
+            /> : null
+        }
+        { data ? 
+            <AlertSuccessNotification 
+                message="Votre email a bien été envoyé" 
             /> : null
         }
       </form>

@@ -30,3 +30,10 @@ export interface FetchDataProps<T> {
     isError: Boolean;
     fetchData: (url: string) => Promise<void>;
   }
+
+  export interface FetchLazyPostDataProps<T> {
+    data: T | null;
+    isLoading: Boolean;
+    isError: Boolean;
+    fetchData: (url: string, body: any) => Promise<void>;
+  }
