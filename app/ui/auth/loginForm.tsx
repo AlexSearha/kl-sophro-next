@@ -44,6 +44,8 @@ export default function LoginForm() {
    
     return (
         <div className="w-full max-w-[500px] px-3 md:w-1/2">
+            <h1 className={`${lusitana.className} text-4xl font-bold mb-6 flex justify-center`}>Connexion</h1>
+
             <form ref={formRef} action={loginUser} className="flex flex-col justify-center bg-white p-6 rounded-xl shadow-xl">
                 <div className="mb-4">
                     <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>Email</label>
@@ -51,6 +53,7 @@ export default function LoginForm() {
                         type="email"
                         id="email"
                         name="email"
+                        placeholder="(ex: marie.durand@gmail.com)"
                         required
                         className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
                     />
@@ -61,6 +64,7 @@ export default function LoginForm() {
                         type="password"
                         id="password"
                         name="password"
+                        placeholder="(ex: ********)"
                         required
                         className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
                     />
@@ -86,7 +90,7 @@ export default function LoginForm() {
                     /> : null
                 }
             </form>
-            <Link href="/signup"></Link>
+                
         </div>
     )
 }
