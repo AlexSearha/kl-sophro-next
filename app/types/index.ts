@@ -37,3 +37,30 @@ export interface FetchDataProps<T> {
     isError: Boolean;
     fetchData: (url: string, body: any) => Promise<void>;
   }
+
+  export interface FormValue {
+    name: string;
+    email: string;
+    phone: string;
+    serviceType: string;
+    message: string;
+  }
+
+  export interface LoginFormResponse {
+    accessToken: string;
+    user: UserProps;
+  }
+
+  interface UserProps {
+    id: number;
+    firstname: string;
+    lastname: string;
+    student: boolean;
+    address: string | null;
+    photo: string | null;
+    phone_number: string;
+    newsletter: boolean;
+    notifications: boolean;
+    email: string;
+    role: string;
+  }
