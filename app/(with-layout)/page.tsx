@@ -193,7 +193,7 @@ export default function Home() {
 
         {/* Price section */}
         <section id='price-section' className="mx-auto h-auto w-full my-16 px-4 sm:max-w-2xl xl:max-w-5xl">
-          <div id="price-card-container" className="flex flex-wrap w-full justify-between">
+          <div id="price-card-container" className="flex flex-wrap w-full justify-center md:justify-between gap-3 md:gap-0">
             <PriceCard 
               image={adulteImg} 
               title="Adulte" 
