@@ -28,27 +28,22 @@ export default function DashboardSideNav() {
           alt="Logo de Katia Lemaire Sophrologue"
         />
       </Link>
-      <div id="nav-menu">
+      <div id="nav-menu w-full">
         <nav>
-          <ul className='flex flex-col gap-2'>
-            <li className="transition-all hover:text-greena-400">
+          <ul className='flex flex-col gap-2 items-center text-xl text-white'>
+            <li className="transition-all hover:text-slate-300">
               <Link href="/dashboard" className="h-10 w-full p-1">
                 Dashboard
               </Link>
             </li>
-            <li className="hover:text-greena-400">
-              <Link href="/dashboard" className="h-10 w-full p-1">
-                Dashboard
+            <li className="hover:text-slate-300">
+              <Link href="/dashboard/client" className="h-10 w-full p-1">
+                Client
               </Link>
             </li>
-            <li className="hover:text-greena-400">
-              <Link href="/dashboard" className="h-10 w-full p-1">
-                Dashboard
-              </Link>
-            </li>
-            <li className="hover:text-greena-400">
-              <Link href="/dashboard" className="h-10 w-full p-1">
-                Dashboard
+            <li className="hover:text-slate-300">
+              <Link href="/dashboard/rendez-vous" className="h-10 w-full p-1">
+                Rendez-vous
               </Link>
             </li>
           </ul>
@@ -59,12 +54,12 @@ export default function DashboardSideNav() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onClick={handleClick}
-          className="h-7 w-7 text-black/75 hover:text-black/40 cursor-pointer"
+          className="h-7 w-7 text-white/75 hover:text-white/40 cursor-pointer"
           aria-hidden="true"
         />
         <div
           id="popover-logout"
-          className={`absolute -bottom-6 left-0 h-6 text-sm w-full flex justify-center items-center transition-opacity transition-height duration-300 ${
+          className={`absolute -bottom-6 left-0 h-6 text-sm w-full text-white flex justify-center items-center transition-opacity transition-height duration-300 ${
             isFocus ? 'opacity-100' : 'opacity-0'
           }`}
         >
