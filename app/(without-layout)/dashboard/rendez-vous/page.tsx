@@ -5,7 +5,7 @@ export default function RendezVousPage() {
     <>
       <h1 
         id="mainTitle" 
-        className={`${lusitana.className} text-3xl text-greena-500 font-bold`}>
+        className={`${lusitana.className} text-4xl text-greena-500 font-bold`}>
           Rendez-Vous
       </h1>
     </>

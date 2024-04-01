@@ -64,3 +64,11 @@ export interface FetchDataProps<T> {
     email: string;
     role: string;
   }
+
+// Card rendez-vous Props
+  export interface CarRendezVousProps {
+    date: string;
+    fullname: string;
+    address: string;
+    id: number;
+}
