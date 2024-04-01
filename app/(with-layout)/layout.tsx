@@ -4,7 +4,6 @@ import "@/app/ui/globals.css";
 import { Header } from "../ui/home/header";
 import { Footer } from "../ui/home/footer";
 
-
 export const metadata: Metadata = {
   title: {
     template: '%s | KL Sophrologue',
@@ -22,7 +21,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${roboto.className} antialiased bg-bgcolor-400`} suppressHydrationWarning={true}>
         <Header />
-        {children}
+          {children}
         <Footer />
       </body>
     </html>

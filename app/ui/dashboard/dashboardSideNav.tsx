@@ -30,9 +30,28 @@ export default function DashboardSideNav() {
       </Link>
       <div id="nav-menu">
         <nav>
-          <Link href="/dashboard" className="h-10 w-full p-1">
-            Dashboard
-          </Link>
+          <ul className='flex flex-col gap-2'>
+            <li className="transition-all hover:text-greena-400">
+              <Link href="/dashboard" className="h-10 w-full p-1">
+                Dashboard
+              </Link>
+            </li>
+            <li className="hover:text-greena-400">
+              <Link href="/dashboard" className="h-10 w-full p-1">
+                Dashboard
+              </Link>
+            </li>
+            <li className="hover:text-greena-400">
+              <Link href="/dashboard" className="h-10 w-full p-1">
+                Dashboard
+              </Link>
+            </li>
+            <li className="hover:text-greena-400">
+              <Link href="/dashboard" className="h-10 w-full p-1">
+                Dashboard
+              </Link>
+            </li>
+          </ul>
         </nav>
       </div>
       <div className="flex justify-center items-center h-10 w-full relative">
@@ -45,7 +64,7 @@ export default function DashboardSideNav() {
         />
         <div
           id="popover-logout"
-          className={`absolute -bottom-3 left-0 h-6 text-sm w-full flex justify-center items-center transition-opacity transition-height duration-300 ${
+          className={`absolute -bottom-6 left-0 h-6 text-sm w-full flex justify-center items-center transition-opacity transition-height duration-300 ${
             isFocus ? 'opacity-100' : 'opacity-0'
           }`}
         >
