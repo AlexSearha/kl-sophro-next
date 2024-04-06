@@ -52,18 +52,6 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
                   </button>
                 )}
               </Menu.Item>
-              {/* <Menu.Item>
-                {({ active }) => (
-                  <button
-                    
-                    className={`${
-                      active ? 'bg-greena-400 text-white' : 'text-gray-900'
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    Méditations
-                  </button>
-                )}
-              </Menu.Item> */}
               <Menu.Item>
                 {({ active }) => (
                   <button
@@ -74,6 +62,18 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
                   >
                     
                     Contact
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={() => router.push('/cgv')}
+                    className={`${
+                      active ? 'bg-greena-400 text-white' : 'text-gray-900'
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    CGV
                   </button>
                 )}
               </Menu.Item>

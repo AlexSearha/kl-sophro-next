@@ -34,22 +34,22 @@ export default function DashboardSideNav() {
       <div id="nav-menu w-full">
         <nav>
           <ul className="flex flex-col gap-2 items-center text-xl text-white">
-            <li className={`transition-all hover:text-slate-300 ${pathName === "/dashboard" ? "underline underline-offset-4" : ""}`}>
+            <li className={`transition-all ${pathName === "/dashboard" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
               <Link href="/dashboard" className="h-10 w-full p-1">
                 Dashboard
               </Link>
             </li>
-            <li className={`transition-all hover:text-slate-300 ${pathName === "/dashboard/dossiers" ? "underline underline-offset-4" : ""}`}>
+            <li className={`transition-all ${pathName === "/dashboard/dossiers" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
               <Link href="/dashboard/dossiers" className="h-10 w-full p-1">
                 Dossiers
               </Link>
             </li>
-            <li className={`transition-all hover:text-slate-300 ${pathName === "/dashboard/clients" ? "underline underline-offset-4" : ""}`}>
+            <li className={`transition-all ${pathName === "/dashboard/clients" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
               <Link href="/dashboard/clients" className="h-10 w-full p-1">
                 Clients
               </Link>
             </li>
-            <li className={`transition-all hover:text-slate-300 ${pathName === "/dashboard/rendez-vous" ? "underline underline-offset-4" : ""}`}>
+            <li className={`transition-all ${pathName === "/dashboard/rendez-vous" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
               <Link href="/dashboard/rendez-vous" className="h-10 w-full p-1">
                 Rendez-vous
               </Link>
