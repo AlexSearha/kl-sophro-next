@@ -1,5 +1,4 @@
 'use client';
-
 import { AlertErrorNotification, AlertSuccessNotification } from "@/app/ui/alerte-notification";
 import { useEffect, useRef } from "react"
 import { lusitana } from "../fonts";
@@ -7,17 +6,20 @@ import { useLazyPostFetchData } from "@/app/lib/hooks";
 import LoadingSubmitForm from "../contact/Loading";
 
 
-export default function ResetPasswordForm() {
+export default function ResetPasswordForm({token} : { token : string}) {
     const formRef = useRef(null);
     const {fetchData, isLoading, isError, data} = useLazyPostFetchData();
 
     async function createFormData(formData: FormData) {
       const rawFormData = {
-        email: formData.get('email'),
+        password: formData.get('password'),
+        confirmPassword: formData.get('confirmPassword'),
+        token: token
       }
             
-      if(rawFormData.email) {
-        fetchData('http://localhost:3001/contact', rawFormData);
+      if(rawFormData.password && rawFormData.confirmPassword) {
+        {/* TODO: Ajouter la bonne URL */}
+        fetchData('http://localhost:3001/reset-password', rawFormData);
       }
     }
 
@@ -31,11 +33,21 @@ export default function ResetPasswordForm() {
         <div className="w-full max-w-[500px] px-3 md:w-1/2">
       <form ref={formRef} action={createFormData} className="flex flex-col justify-center bg-white p-6 rounded-xl shadow-xl">
         <div className="mb-4">
-          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>Email</label>
+          <label htmlFor="password" className={`${lusitana.className} block font-bold text-xl`}>Nouveau mot de passe</label>
           <input
-            type="email"
-            id="email"
-            name="email"
+            type="password"
+            id="password"
+            name="password"
+            required
+            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>Confirmation du mot de passe</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
             required
             className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
           />

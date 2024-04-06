@@ -38,12 +38,12 @@ export default function DashboardSideNav() {
             </li>
             <li className="hover:text-slate-300">
               <Link href="/dashboard/dossiers" className="h-10 w-full p-1">
-                Dossier
+                Dossiers
               </Link>
             </li>
             <li className="hover:text-slate-300">
               <Link href="/dashboard/clients" className="h-10 w-full p-1">
-                Client
+                Clients
               </Link>
             </li>
             <li className="hover:text-slate-300">

@@ -6,6 +6,11 @@ const nextConfig = {
                 source: '/dashboard/client',
                 destination: '/dashboard',
                 permanent: true
+            },
+            {
+                source: '/reinitialiser-mot-de-passe',
+                destination: '/',
+                permanent: true
             }
         ]
     }
