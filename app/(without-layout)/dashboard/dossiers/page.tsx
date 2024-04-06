@@ -10,7 +10,7 @@ export default function DossiersPage({
         <h1 
           id="mainTitle" 
           className={`${lusitana.className} text-4xl text-greena-500 font-bold`}>
-            Dashboard
+            Dossiers Page
         </h1>
       </>
     )

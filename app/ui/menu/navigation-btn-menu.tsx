@@ -31,6 +31,7 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={() => router.push('/#sophrology')}
                     className={`${
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -42,6 +43,7 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={() => router.push('/#prices')}
                     className={`${
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -50,9 +52,10 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
                   </button>
                 )}
               </Menu.Item>
-              <Menu.Item>
+              {/* <Menu.Item>
                 {({ active }) => (
                   <button
+                    
                     className={`${
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -60,10 +63,11 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
                     Méditations
                   </button>
                 )}
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={() => router.push('/contact')}
                     className={`${
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}

@@ -70,7 +70,7 @@ export default function LoginForm() {
                     />
                     <p>
                         <Link className="text-xs transition-all hover:text-greena-400" 
-                              href="reset-password">
+                              href="/motdepasseoublie">
                                 Mot de passe oublié ?
                         </Link>
                     </p>

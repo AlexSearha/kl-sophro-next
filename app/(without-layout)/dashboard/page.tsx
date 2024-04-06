@@ -4,7 +4,7 @@ import { lusitana } from "@/app/ui/fonts";
 import { useState } from "react";
 
 export default function DashboardPage() {
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState('');
 
   return (
     <>

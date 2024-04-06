@@ -61,7 +61,7 @@ export default function Home() {
             </p>
         </section>
         {/* Section The sophrology*/}
-        <section className="mx-auto my-16 mx-6 px-4 sm:max-w-2xl xl:max-w-5xl">
+        <section id="sophrology" className="mx-auto my-16 mx-6 px-4 sm:max-w-2xl xl:max-w-5xl">
           <h2 className={`text-center text-3xl font-bold ${lusitana.className} mb-8`}>{`Qu'est ce que la Sophrologie ?`}</h2>
           <div className="flex flex-col items-center mt-6 xl:gap-20 xl:flex-row sm:gap-4">
               <p className="text-justify">
@@ -192,7 +192,8 @@ export default function Home() {
         </section>
 
         {/* Price section */}
-        <section id='price-section' className="mx-auto h-auto w-full my-16 px-4 sm:max-w-2xl xl:max-w-5xl">
+        <section id='prices' className="mx-auto h-auto w-full my-16 px-4 sm:max-w-2xl xl:max-w-5xl">
+        <h2 className={`text-center text-3xl font-bold ${lusitana.className} mb-8`}>Tarifs</h2>
           <div id="price-card-container" className="flex flex-wrap w-full justify-center md:justify-between gap-3 md:gap-0">
             <PriceCard 
               image={adulteImg} 
