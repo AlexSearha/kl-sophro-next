@@ -1,8 +1,11 @@
+'use client';
 import CardRendezVous from "@/app/ui/dashboard/cardRendezVous";
 import { lusitana } from "@/app/ui/fonts";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+import { useState } from "react";
 
 export default function DashboardPage() {
+  const [searchText, setSearchText] = useState<string>('');
+
   return (
     <>
       <h1 
@@ -11,18 +14,17 @@ export default function DashboardPage() {
           Dashboard
       </h1>
       <div className="mt-4">
-        <div className="flex justify-between mr-2">
+        <div className="flex justify-between mx-2">
           <h2 className={`${lusitana.className} text-3xl mb-3`}>Mes prochains rendez-vous</h2>
           <div className="flex gap-2">
             <input 
               type="text" 
-              placeholder="Recherche" 
+              placeholder="Recherche"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
               id="search" name="search" 
               className="focus:ring-greena-400 focus:border-greena-400 rounded"
             />
-            <button className="flex justify-center items-center bg-greena-400 hover:bg-greena-500 p-2 transition-all rounded">
-              <MagnifyingGlassIcon width={25} className="text-white" />
-            </button>
           </div>
         </div>
           <div id="card-container" className="flex flex-col w-full">
