@@ -1,5 +1,8 @@
 export default function LoadingSubmitForm() {
-    return <p>Envoi
-                <span className="animate-blink">...</span>
-            </p>
-  }
+  return (
+    <p>
+      Envoi
+      <span className="animate-blink">...</span>
+    </p>
+  );
+}

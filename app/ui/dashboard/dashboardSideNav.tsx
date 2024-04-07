@@ -9,7 +9,14 @@ import { usePathname } from 'next/navigation';
 
 export default function DashboardSideNav() {
   const [isFocus, setIsFocus] = useState(false);
-  const pathName = usePathname();
+  const urlPathName = usePathname();
+  const pathName = () => {
+    const [firstElem, secondElem, thridElem] = urlPathName.split('/');
+    if (thridElem === undefined) {
+      return `/${secondElem}`;
+    }
+    return `/${secondElem}/${thridElem}`;
+  };
   const handleMouseEnter = () => {
     setIsFocus(true);
   };
@@ -20,12 +27,12 @@ export default function DashboardSideNav() {
     console.log('handleclick');
   };
 
-
   return (
     <div className="flex flex-col justify-between h-full">
       <Link href="/">
         <Image
           src={Logo}
+          priority={true}
           width={250}
           height={250}
           alt="Logo de Katia Lemaire Sophrologue"
@@ -33,23 +40,47 @@ export default function DashboardSideNav() {
       </Link>
       <div id="nav-menu w-full">
         <nav>
-          <ul className="flex flex-col gap-2 items-center text-xl text-white">
-            <li className={`transition-all ${pathName === "/dashboard" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
+          <ul className="flex flex-col gap-3 items-center text-xl text-white">
+            <li
+              className={`transition-all ${
+                pathName() === '/dashboard'
+                  ? 'bg-white p-1 text-greena-500 rounded font-bold'
+                  : 'hover:underline'
+              }`}
+            >
               <Link href="/dashboard" className="h-10 w-full p-1">
                 Dashboard
               </Link>
             </li>
-            <li className={`transition-all ${pathName === "/dashboard/dossiers" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
+            <li
+              className={`transition-all ${
+                pathName() === '/dashboard/dossiers'
+                  ? 'bg-white p-1 text-greena-500 rounded font-bold'
+                  : 'hover:underline'
+              }`}
+            >
               <Link href="/dashboard/dossiers" className="h-10 w-full p-1">
                 Dossiers
               </Link>
             </li>
-            <li className={`transition-all ${pathName === "/dashboard/clients" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
+            <li
+              className={`transition-all ${
+                pathName() === '/dashboard/clients'
+                  ? 'bg-white p-1 text-greena-500 rounded font-bold'
+                  : 'hover:underline'
+              }`}
+            >
               <Link href="/dashboard/clients" className="h-10 w-full p-1">
                 Clients
               </Link>
             </li>
-            <li className={`transition-all ${pathName === "/dashboard/rendez-vous" ? "bg-white p-1 text-greena-500 rounded" : "hover:underline"}`}>
+            <li
+              className={`transition-all ${
+                pathName() === '/dashboard/rendez-vous'
+                  ? 'bg-white p-1 text-greena-500 rounded font-bold'
+                  : 'hover:underline'
+              }`}
+            >
               <Link href="/dashboard/rendez-vous" className="h-10 w-full p-1">
                 Rendez-vous
               </Link>

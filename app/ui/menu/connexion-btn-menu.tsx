@@ -1,18 +1,26 @@
-import { Menu, Transition } from "@headlessui/react";
-import { UserCircleIcon } from "@heroicons/react/20/solid";
-import { useRouter } from "next/navigation";
-import { Fragment } from "react";
+import { Menu, Transition } from '@headlessui/react';
+import { UserCircleIcon } from '@heroicons/react/20/solid';
+import { useRouter } from 'next/navigation';
+import { Fragment } from 'react';
 
-export default function ConnexionBtnMenu({connected} : {connected: boolean}) {
+export default function ConnexionBtnMenu({
+  connected,
+}: {
+  connected: boolean;
+}) {
   const router = useRouter();
 
   return (
     <>
-        <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center px-2 py-3">
             <UserCircleIcon
-              className={`h-7 w-7 ${connected ? 'text-greena-400 hover:text-greena-500' : 'text-black/75 hover:text-black/40'}`}
+              className={`h-7 w-7 ${
+                connected
+                  ? 'text-greena-400 hover:text-greena-500'
+                  : 'text-black/75 hover:text-black/40'
+              }`}
               aria-hidden="true"
             />
           </Menu.Button>
@@ -32,7 +40,11 @@ export default function ConnexionBtnMenu({connected} : {connected: boolean}) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={connected ? () => router.push('/dashboard') : () => router.push('/auth/login')}
+                    onClick={
+                      connected
+                        ? () => router.push('/dashboard')
+                        : () => router.push('/auth/login')
+                    }
                     className={`${
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -44,7 +56,11 @@ export default function ConnexionBtnMenu({connected} : {connected: boolean}) {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={connected ? () => router.push('/logout') : () => router.push('/auth/register')}
+                    onClick={
+                      connected
+                        ? () => router.push('/logout')
+                        : () => router.push('/auth/register')
+                    }
                     className={`${
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}

@@ -1,14 +1,18 @@
-import { Menu, Transition } from "@headlessui/react";
-import { Bars3Icon } from "@heroicons/react/20/solid";
-import { useRouter } from "next/navigation";
-import { Fragment } from "react";
+import { Menu, Transition } from '@headlessui/react';
+import { Bars3Icon } from '@heroicons/react/20/solid';
+import { useRouter } from 'next/navigation';
+import { Fragment } from 'react';
 
-export default function NavigationBtnMenu({connected} : {connected: boolean}) {
+export default function NavigationBtnMenu({
+  connected,
+}: {
+  connected: boolean;
+}) {
   const router = useRouter();
 
   return (
     <>
-        <Menu as="div" className="relative inline-block text-left">
+      <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center px-2 py-3">
             <Bars3Icon
@@ -60,7 +64,6 @@ export default function NavigationBtnMenu({connected} : {connected: boolean}) {
                       active ? 'bg-greena-400 text-white' : 'text-gray-900'
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    
                     Contact
                   </button>
                 )}
