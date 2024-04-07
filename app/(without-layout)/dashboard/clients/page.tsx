@@ -1,10 +1,28 @@
 'use client';
+import React, { useState } from 'react';
 import ClientListItem from '@/app/ui/clients/ClientListItem';
 import { lusitana } from '@/app/ui/fonts';
-import { useState } from 'react';
 
 export default function ClientsSearchPage() {
   const [searchText, setSearchText] = useState('');
+
+  const loop = () => {
+    const tab = [];
+    for (let i = 0; i < 50; i++) {
+      // Correction de la condition de la boucle
+      tab.push(
+        <ClientListItem
+          lastname="Marouf"
+          firstname="Alexis"
+          email="alexis.marouf@hotmail.fr"
+          phone="0626904074"
+          id={i} // Utilisation de la variable i pour générer des identifiants uniques
+          key={i} // Ajout de la clé unique pour chaque élément de la liste
+        />
+      );
+    }
+    return tab;
+  };
 
   return (
     <>
@@ -40,15 +58,7 @@ export default function ClientsSearchPage() {
                 <th scope="col">Télephone</th>
               </tr>
             </thead>
-            <tbody className="mt-2">
-              <ClientListItem
-                lastname="Marouf"
-                firstname="Alexis"
-                email="alexis.marouf@hotmail.fr"
-                phone="0626904074"
-                id={2}
-              />
-            </tbody>
+            <tbody className="mt-2">{loop()}</tbody>
           </table>
         </div>
       </div>

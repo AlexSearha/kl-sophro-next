@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 import Logo from '@/public/cropped-Logo-Katia-lemaire-sophrologie2-255x103.png';
 import Link from 'next/link';
@@ -45,7 +44,7 @@ export default function DashboardSideNav() {
               className={`transition-all ${
                 pathName() === '/dashboard'
                   ? 'bg-white p-1 text-greena-500 rounded font-bold'
-                  : 'hover:underline'
+                  : 'hover:text-slate-300'
               }`}
             >
               <Link href="/dashboard" className="h-10 w-full p-1">
@@ -56,7 +55,7 @@ export default function DashboardSideNav() {
               className={`transition-all ${
                 pathName() === '/dashboard/dossiers'
                   ? 'bg-white p-1 text-greena-500 rounded font-bold'
-                  : 'hover:underline'
+                  : 'hover:text-slate-300'
               }`}
             >
               <Link href="/dashboard/dossiers" className="h-10 w-full p-1">
@@ -67,7 +66,7 @@ export default function DashboardSideNav() {
               className={`transition-all ${
                 pathName() === '/dashboard/clients'
                   ? 'bg-white p-1 text-greena-500 rounded font-bold'
-                  : 'hover:underline'
+                  : 'hover:text-slate-300'
               }`}
             >
               <Link href="/dashboard/clients" className="h-10 w-full p-1">
@@ -78,7 +77,7 @@ export default function DashboardSideNav() {
               className={`transition-all ${
                 pathName() === '/dashboard/rendez-vous'
                   ? 'bg-white p-1 text-greena-500 rounded font-bold'
-                  : 'hover:underline'
+                  : 'hover:text-slate-300'
               }`}
             >
               <Link href="/dashboard/rendez-vous" className="h-10 w-full p-1">
