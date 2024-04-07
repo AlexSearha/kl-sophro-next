@@ -1,12 +1,8 @@
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers';
-import { Dispatch, SetStateAction } from 'react';
+import { CalendareElementProps } from '@/app/types';
 import dayjs from 'dayjs';
-
-interface CalendareElementProps {
-  setDateValue: Dispatch<SetStateAction<Date | null | undefined>>;
-}
 
 export default function CalendarElement({
   setDateValue,

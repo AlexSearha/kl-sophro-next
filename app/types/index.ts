@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface CardProps {
   title: string;
@@ -79,4 +80,8 @@ export interface ClientListItemProps {
   email: string;
   phone: string;
   id: number;
+}
+
+export interface CalendareElementProps {
+  setDateValue: Dispatch<SetStateAction<Date | null | undefined>>;
 }
