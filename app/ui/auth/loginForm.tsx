@@ -6,7 +6,6 @@ import {
 } from '@/app/ui/alerte-notification';
 import { useEffect, useRef } from 'react';
 import { lusitana } from '../fonts';
-import { redirect } from 'next/navigation';
 import { useLazyPostFetchData } from '@/app/lib/hooks';
 import LoadingSubmitForm from '../contact/Loading';
 import Link from 'next/link';
@@ -33,17 +32,6 @@ export default function LoginForm() {
       (formRef.current as HTMLFormElement).reset();
     }
   }, [data, isError]);
-
-  {
-    /* TODO: Ajouter le AccessToken au headers */
-  }
-  useEffect(() => {
-    if (data && !isLoading) {
-      const accessToken = data.accessToken;
-
-      // redirect('/dashboard');
-    }
-  }, [data, isLoading]);
 
   return (
     <div className="w-full max-w-[500px] px-3 md:w-1/2">
