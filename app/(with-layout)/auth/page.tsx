@@ -25,9 +25,9 @@ type counterState = {
 };
 
 type counterAction = {
-  type: 'LOGIN' | 'LOGOUT' | 'PUT-LOGIN-DATA';
+  type: 'LOGIN' | 'LOGOUT' | 'PUT-LOGIN-DATA' | 'PUT-SIGNUP-DATA';
   payload: { value: any };
-  fieldName: string;
+  fieldName?: string;
 };
 
 const initialState = {
@@ -74,6 +74,15 @@ const authReducer = (state: counterState, action: counterAction) => {
           },
         };
       }
+    case 'PUT-SIGNUP-DATA':
+      return {
+        ...state,
+        signupRowFormData: {
+          ...state.signupRowFormData,
+          [action.fieldName]: action.payload.value,
+        },
+      };
+
     default:
       return state;
   }

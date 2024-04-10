@@ -1,6 +1,6 @@
 import { useLazyPostFetchData } from '@/app/lib/hooks';
 import { LoginFormResponse } from '@/app/types';
-import { useEffect, useRef } from 'react';
+import { use, useContext, useEffect, useRef } from 'react';
 import { lusitana } from '../fonts';
 import Link from 'next/link';
 import LoadingSubmitForm from '../contact/Loading';
@@ -8,8 +8,10 @@ import {
   AlertErrorNotification,
   AlertSuccessNotification,
 } from '../alerte-notification';
+import { authContext } from '@/app/(with-layout)/auth/page';
 
 export default function SignupForm() {
+  const { state, dispatch } = useContext(authContext);
   const formRef = useRef(null);
   const { fetchData, isLoading, isError, data } =
     useLazyPostFetchData<LoginFormResponse>();
@@ -45,6 +47,10 @@ export default function SignupForm() {
     }
   }, [data, isLoading]);
 
+  useEffect(() => {
+    console.log(state.signupRowFormData);
+  }, [state.signupRowFormData]);
+
   return (
     <div className="w-full max-w-[500px] px-3 md:w-1/2">
       <h1
@@ -68,6 +74,14 @@ export default function SignupForm() {
               type="text"
               id="lastname"
               name="lastname"
+              value={state.signupRowFormData.lastname}
+              onChange={(event) =>
+                dispatch({
+                  type: 'PUT-SIGNUP-DATA',
+                  payload: { value: event.target.value },
+                  fieldName: 'lastname',
+                })
+              }
               placeholder="(ex: Durand)"
               required
               className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
@@ -84,6 +98,14 @@ export default function SignupForm() {
               type="text"
               id="firstname"
               name="firstname"
+              value={state.signupRowFormData.firstname}
+              onChange={(event) =>
+                dispatch({
+                  type: 'PUT-SIGNUP-DATA',
+                  payload: { value: event.target.value },
+                  fieldName: 'firstname',
+                })
+              }
               placeholder="(ex: Marie)"
               required
               className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
@@ -101,6 +123,14 @@ export default function SignupForm() {
             type="tel"
             id="phone"
             name="phone"
+            value={state.signupRowFormData.phone}
+            onChange={(event) =>
+              dispatch({
+                type: 'PUT-SIGNUP-DATA',
+                payload: { value: event.target.value },
+                fieldName: 'phone',
+              })
+            }
             placeholder="(ex: 06123456789)"
             required
             className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
@@ -117,6 +147,14 @@ export default function SignupForm() {
             type="email"
             id="email"
             name="email"
+            value={state.signupRowFormData.email}
+            onChange={(event) =>
+              dispatch({
+                type: 'PUT-SIGNUP-DATA',
+                payload: { value: event.target.value },
+                fieldName: 'email',
+              })
+            }
             placeholder="(ex: marie.durand@gmail.com)"
             required
             className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
@@ -133,6 +171,14 @@ export default function SignupForm() {
             type="password"
             id="password"
             name="password"
+            value={state.signupRowFormData.password}
+            onChange={(event) =>
+              dispatch({
+                type: 'PUT-SIGNUP-DATA',
+                payload: { value: event.target.value },
+                fieldName: 'password',
+              })
+            }
             placeholder="(ex: ******)"
             required
             className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
