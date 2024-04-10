@@ -4,14 +4,16 @@ import {
   AlertErrorNotification,
   AlertSuccessNotification,
 } from '@/app/ui/alerte-notification';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { lusitana } from '../fonts';
 import { useLazyPostFetchData } from '@/app/lib/hooks';
 import LoadingSubmitForm from '../contact/Loading';
 import Link from 'next/link';
 import { LoginFormResponse } from '@/app/types';
+import { authContext } from '@/app/(with-layout)/auth/page';
 
 export default function LoginForm() {
+  const { state, dispatch } = useContext(authContext);
   const formRef = useRef(null);
   const { fetchData, isLoading, isError, data } =
     useLazyPostFetchData<LoginFormResponse>();
@@ -57,6 +59,14 @@ export default function LoginForm() {
             type="email"
             id="email"
             name="email"
+            value={state.loginRowFormData.email}
+            onChange={(event) =>
+              dispatch({
+                type: 'PUT-LOGIN-DATA',
+                payload: { value: event.target.value },
+                fieldName: 'email',
+              })
+            }
             placeholder="(ex: marie.durand@gmail.com)"
             required
             className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
@@ -73,6 +83,14 @@ export default function LoginForm() {
             type="password"
             id="password"
             name="password"
+            value={state.loginRowFormData.password}
+            onChange={(event) =>
+              dispatch({
+                type: 'PUT-LOGIN-DATA',
+                payload: { value: event.target.value },
+                fieldName: 'password',
+              })
+            }
             placeholder="(ex: ********)"
             required
             className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
