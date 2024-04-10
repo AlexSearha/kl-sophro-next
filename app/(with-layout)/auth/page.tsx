@@ -57,31 +57,25 @@ const authReducer = (state: counterState, action: counterAction) => {
     case 'LOGOUT':
       return { ...state, isAuthenticated: false };
     case 'PUT-LOGIN-DATA':
-      if (action.fieldName === 'email') {
+      if (action.fieldName) {
         return {
           ...state,
           loginRowFormData: {
             ...state.loginRowFormData,
-            email: action.payload.value,
-          },
-        };
-      } else if (action.fieldName === 'password') {
-        return {
-          ...state,
-          loginRowFormData: {
-            ...state.loginRowFormData,
-            password: action.payload.value,
+            [action.fieldName]: action.payload.value,
           },
         };
       }
     case 'PUT-SIGNUP-DATA':
-      return {
-        ...state,
-        signupRowFormData: {
-          ...state.signupRowFormData,
-          [action.fieldName]: action.payload.value,
-        },
-      };
+      if (action.fieldName) {
+        return {
+          ...state,
+          signupRowFormData: {
+            ...state.signupRowFormData,
+            [action.fieldName]: action.payload.value,
+          },
+        };
+      }
 
     default:
       return state;
