@@ -1,26 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
 import { AlertErrorNotification } from '../../alerte-notification';
-import { MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import { useLazyPostFetchData } from '@/app/lib/hooks';
-import CalendarElement from '../calendar';
+import CalendarElement from '../CalendarElement';
 import LoadingSubmitForm from '../../contact/Loading';
+import SelectElement from './elements/SelectElement';
+import InputElement from './elements/InputElement';
 
 export default function AdminCalendarForm() {
   const { fetchData, isLoading, isError, data } = useLazyPostFetchData();
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event) => {
     setHour(event.target.value as string);
   };
   const [errorMessage, setErrorMessage] = useState('');
   const [hour, setHour] = useState('');
   const [dateValue, setDateValue] = useState<Date | null>();
+  const [selectValue, setSelectValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const formRef = useRef(null);
 
   async function postAppointment(formData: FormData) {
     setErrorMessage('');
     const rowFormData = {
       date: dateValue,
-      hour: formData.get('hour'),
-      comments: formData.get('comments'),
+      hour: selectValue,
+      commentary: inputValue,
     };
     {
       /* TODO: Fetch vers la bonne route */
@@ -48,29 +51,8 @@ export default function AdminCalendarForm() {
         className="flex flex-col justify-center gap-2"
       >
         <CalendarElement setDateValue={setDateValue} />
-        <Select
-          id="hour"
-          name="hour"
-          value={hour}
-          onChange={handleChange}
-          label="Heure du rendez-vous"
-        >
-          <MenuItem key="none" value="">
-            <em>Veuillez choisir un créneau</em>
-          </MenuItem>
-          <MenuItem value={10}>10</MenuItem>
-          <MenuItem value={20}>20</MenuItem>
-          <MenuItem value={30}>30</MenuItem>
-          <MenuItem value={40}>40</MenuItem>
-          <MenuItem value={50}>50</MenuItem>
-        </Select>
-        <TextField
-          fullWidth
-          label="Commentaire"
-          placeholder="Ajouter un commentaire (optionnel)"
-          name="comments"
-          className="focus:ring-0 hover:ring-0 active:ring-0"
-        />
+        <SelectElement setSelectValue={setSelectValue} />
+        <InputElement setInputValue={setInputValue} />
         <button
           type="submit"
           className="px-4 py-2 mb-2 bg-greena-400 text-white font-semibold rounded transition-all hover:bg-greena-500 focus:outline-none focus:ring focus:border-greena-400"
