@@ -8,12 +8,9 @@ import InputElement from './elements/InputElement';
 
 export default function AdminCalendarForm() {
   const { fetchData, isLoading, isError, data } = useLazyPostFetchData();
-  const handleChange = (event) => {
-    setHour(event.target.value as string);
-  };
+
   const [errorMessage, setErrorMessage] = useState('');
-  const [hour, setHour] = useState('');
-  const [dateValue, setDateValue] = useState<Date | null>();
+  const [dateValue, setDateValue] = useState<Date | null | undefined>();
   const [selectValue, setSelectValue] = useState('');
   const [inputValue, setInputValue] = useState('');
   const formRef = useRef(null);
@@ -21,7 +18,7 @@ export default function AdminCalendarForm() {
   async function postAppointment(formData: FormData) {
     setErrorMessage('');
     const rowFormData = {
-      date: dateValue,
+      date: dateValue?.toISOString().slice(0, 19).replace('T', ' '),
       hour: selectValue,
       commentary: inputValue,
     };
@@ -43,6 +40,7 @@ export default function AdminCalendarForm() {
       (formRef.current as HTMLFormElement).reset();
     }
   }, [data, isError]);
+
   return (
     <>
       <form

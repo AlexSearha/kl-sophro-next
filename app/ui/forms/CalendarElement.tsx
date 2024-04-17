@@ -3,12 +3,7 @@ import { Calendar, theme } from 'antd';
 import { ConfigProvider } from 'antd';
 import dayjs from 'dayjs';
 import frFR from 'antd/locale/fr_FR';
-import type { CalendarProps } from 'antd';
 import type { Dayjs } from 'dayjs';
-
-const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
-  console.log(value.format('DD-MM-YYYY'), mode);
-};
 
 const disabledDate = (current: Dayjs | null) => {
   return current ? current.isBefore(dayjs(), 'day') : false;
@@ -17,11 +12,9 @@ const disabledDate = (current: Dayjs | null) => {
 export default function CalendarElement({
   setDateValue,
 }: CalendareElementProps) {
-  const handleDateChange = (date: Date | null) => {
+  const handleSelect = (date: dayjs.Dayjs) => {
     if (date) {
-      setDateValue(date);
-    } else {
-      setDateValue(null);
+      setDateValue(date.toDate());
     }
   };
 
@@ -38,7 +31,7 @@ export default function CalendarElement({
         <Calendar
           fullscreen={false}
           disabledDate={disabledDate}
-          onPanelChange={onPanelChange}
+          onSelect={handleSelect}
         />
       </ConfigProvider>
     </>
