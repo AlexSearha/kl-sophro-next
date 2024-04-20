@@ -85,3 +85,12 @@ export interface ClientListItemProps {
 export interface CalendareElementProps {
   setDateValue: Dispatch<SetStateAction<Date | null | undefined>>;
 }
+
+// ADMIN Client list
+export interface ClientProps {
+  id: number;
+  lastname: string;
+  firstname: string;
+  email: string;
+  phone: string;
+}

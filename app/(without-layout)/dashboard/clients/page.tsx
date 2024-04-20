@@ -2,14 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import ClientListItem from '@/app/ui/clients/ClientListItem';
 import { lusitana } from '@/app/ui/fonts';
-
-interface ClientProps {
-  id: number;
-  lastname: string;
-  firstname: string;
-  email: string;
-  phone: string;
-}
+import { ClientProps } from '@/app/types';
 
 export default function ClientsSearchPage() {
   const [searchText, setSearchText] = useState('');
