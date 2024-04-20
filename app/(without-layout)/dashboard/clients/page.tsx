@@ -1,28 +1,85 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ClientListItem from '@/app/ui/clients/ClientListItem';
 import { lusitana } from '@/app/ui/fonts';
 
+interface ClientProps {
+  id: number;
+  lastname: string;
+  firstname: string;
+  email: string;
+  phone: string;
+}
+
 export default function ClientsSearchPage() {
   const [searchText, setSearchText] = useState('');
+  const [filteredClients, setFilteredClients] = useState<ClientProps[]>([]);
 
-  const loop = () => {
-    const tab = [];
-    for (let i = 0; i < 50; i++) {
-      // Correction de la condition de la boucle
-      tab.push(
-        <ClientListItem
-          lastname="Marouf"
-          firstname="Alexis"
-          email="alexis.marouf@hotmail.fr"
-          phone="0626904074"
-          id={i} // Utilisation de la variable i pour générer des identifiants uniques
-          key={i} // Ajout de la clé unique pour chaque élément de la liste
-        />
-      );
-    }
-    return tab;
-  };
+  {
+    /**  TODO: Remplacer les datas en dur par un fetch */
+  }
+  const clients = [
+    {
+      id: 0,
+      lastname: 'Marouf',
+      firstname: 'Alexis',
+      email: 'alexis.marouf@hotmail.fr',
+      phone: '0626904074',
+    },
+    {
+      id: 1,
+      lastname: 'Smith',
+      firstname: 'John',
+      email: 'john.smith@example.com',
+      phone: '1234567890',
+    },
+    {
+      id: 2,
+      lastname: 'Johnson',
+      firstname: 'Emily',
+      email: 'emily.johnson@example.com',
+      phone: '0987654321',
+    },
+    {
+      id: 3,
+      lastname: 'Garcia',
+      firstname: 'Maria',
+      email: 'maria.garcia@example.com',
+      phone: '5555555555',
+    },
+    {
+      id: 4,
+      lastname: 'Dubois',
+      firstname: 'Sophie',
+      email: 'sophie.dubois@example.com',
+      phone: '9876543210',
+    },
+    {
+      id: 5,
+      lastname: 'Chen',
+      firstname: 'Wei',
+      email: 'wei.chen@example.com',
+      phone: '1231231234',
+    },
+    {
+      id: 6,
+      lastname: 'Kumar',
+      firstname: 'Amit',
+      email: 'amit.kumar@example.com',
+      phone: '6667778888',
+    },
+  ];
+
+  useEffect(() => {
+    const filteredClients = clients.filter(
+      (client) =>
+        client.lastname.toLowerCase().includes(searchText.toLowerCase()) ||
+        client.firstname.toLowerCase().includes(searchText.toLowerCase()) ||
+        client.email.toLowerCase().includes(searchText.toLowerCase()) ||
+        client.phone.includes(searchText)
+    );
+    setFilteredClients(filteredClients);
+  }, [searchText]);
 
   return (
     <>
@@ -58,7 +115,18 @@ export default function ClientsSearchPage() {
                 <th scope="col">Télephone</th>
               </tr>
             </thead>
-            <tbody className="mt-2">{loop()}</tbody>
+            <tbody className="mt-2">
+              {filteredClients.map((client) => (
+                <ClientListItem
+                  key={client.id}
+                  id={client.id}
+                  email={client.email}
+                  firstname={client.firstname}
+                  lastname={client.lastname}
+                  phone={client.phone}
+                />
+              ))}
+            </tbody>
           </table>
         </div>
       </div>
