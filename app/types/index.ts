@@ -69,7 +69,7 @@ interface UserProps {
 // Card rendez-vous Props
 export interface CarRendezVousProps {
   date: string;
-  fullname: string;
+  fullName: string;
   address: string;
   id: number;
   openModal: boolean;

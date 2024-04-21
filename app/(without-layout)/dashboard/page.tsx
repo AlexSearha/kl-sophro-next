@@ -87,7 +87,7 @@ export default function DashboardPage() {
               key={appointment.id}
               id={appointment.id}
               date={appointment.date}
-              fullname={appointment.fullname}
+              fullName={appointment.fullname}
               address={appointment.address}
               openModal={openModal}
               setOpenModal={setOpenModal}

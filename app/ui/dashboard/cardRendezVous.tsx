@@ -8,7 +8,7 @@ import { PencilSquareIcon } from '@heroicons/react/20/solid';
 import ModalGeneric from '../modal';
 
 export default function CardRendezVous({ ...props }: CarRendezVousProps) {
-  const { date, fullname, address, id, openModal, setOpenModal } = props;
+  const { date, fullName, address, id, openModal, setOpenModal } = props;
   const pathName = usePathname();
 
   const handleDelete = () => {
@@ -24,7 +24,7 @@ export default function CardRendezVous({ ...props }: CarRendezVousProps) {
   };
 
   {
-    /** TODO: mettre l'heure exacte */
+    /** TODO: mettre l'heure exacte + trouver pourquoi la date reste toujours la meme  */
   }
   const deleteContentModal = {
     title: 'Supprimer le rendez-vous',
@@ -50,7 +50,7 @@ export default function CardRendezVous({ ...props }: CarRendezVousProps) {
                   className="transition hover:text-greena-400 hover:underline hover: underline-offset-2"
                   href={`${pathName}/clients/${id}`}
                 >
-                  {fullname}
+                  {fullName}
                 </Link>
               </div>
               <div id="card-infos__client-name" className="flex gap-3">
@@ -77,6 +77,7 @@ export default function CardRendezVous({ ...props }: CarRendezVousProps) {
       </div>
       {openModal && (
         <ModalGeneric
+          key={id}
           title={deleteContentModal.title}
           content={deleteContentModal.content}
           cancelAction={handleCancelAction}
