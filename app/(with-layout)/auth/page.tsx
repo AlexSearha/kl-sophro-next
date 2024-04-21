@@ -1,4 +1,5 @@
 'use client';
+
 import LoginForm from '@/app/ui/auth/loginForm';
 import SignupForm from '@/app/ui/auth/signupForm';
 import { lusitana } from '@/app/ui/fonts';

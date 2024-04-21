@@ -27,7 +27,7 @@ export default function SingleClientPage({
       </h1>
       <div
         id="single-client-container"
-        className="grow h-full max-w-4xl mt-2 w-full flex justify-center items-center"
+        className="grow h-full mt-2 w-full flex justify-center items-center"
       >
         <div
           id="user-grid-container"

@@ -96,3 +96,8 @@ export interface ClientProps {
   email: string;
   phone: string;
 }
+
+// Providers
+export type adminReducerInitialValuesProps = {
+  openModal: boolean;
+};
