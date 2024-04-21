@@ -1,4 +1,5 @@
 'use client';
+
 import CardRendezVous from '@/app/ui/dashboard/cardRendezVous';
 import { lusitana } from '@/app/ui/fonts';
 import { useEffect, useState } from 'react';
@@ -40,6 +41,7 @@ export default function DashboardPage() {
   const [searchText, setSearchText] = useState('');
   const [filteredAppointments, setFilteredAppointments] =
     useState(appointments);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleChange = (event: any) => {
     setSearchText(event.target.value);
@@ -87,10 +89,11 @@ export default function DashboardPage() {
               date={appointment.date}
               fullname={appointment.fullname}
               address={appointment.address}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
             />
           ))}
         </div>
-        <div></div>
       </div>
     </>
   );

@@ -73,17 +73,6 @@ export default function DashboardSideNav() {
                 Clients
               </Link>
             </li>
-            <li
-              className={`transition-all ${
-                pathName() === '/dashboard/rendez-vous'
-                  ? 'bg-white p-1 text-greena-500 rounded font-bold'
-                  : 'hover:text-slate-300'
-              }`}
-            >
-              <Link href="/dashboard/rendez-vous" className="h-10 w-full p-1">
-                Rendez-vous
-              </Link>
-            </li>
           </ul>
         </nav>
       </div>

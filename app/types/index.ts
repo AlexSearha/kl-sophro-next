@@ -72,6 +72,8 @@ export interface CarRendezVousProps {
   fullname: string;
   address: string;
   id: number;
+  openModal: boolean;
+  setOpenModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface ClientListItemProps {
