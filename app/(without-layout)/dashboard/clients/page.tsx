@@ -80,7 +80,7 @@ export default function ClientsSearchPage() {
         id="mainTitle"
         className={`${lusitana.className} text-4xl text-greena-500 font-bold`}
       >
-        Dashboard
+        Clients
       </h1>
       <div className="mt-4">
         <div className="flex justify-between mx-2">
