@@ -18,7 +18,7 @@ import PriceCard from '../ui/home/price-card';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full flex-col grow text-neutral-800">
+    <main className="flex w-full flex-col grow text-neutral-800">
       {/* Section banner */}
       <section id="home-tree" className="mt-4 px-4 flex justify-center">
         <div className="flex flex-col items-center max-w-6xl justify-between gap-10 md:flex-row-reverse ">
