@@ -33,11 +33,11 @@ export default function ForgottenPasswordForm() {
   }, [data, isError]);
 
   return (
-    <div className="w-full max-w-[500px] px-3 md:w-1/2">
+    <div className="flex items-center justify-center w-full md:max-w-[500px] px-3 md:w-1/2">
       <form
         ref={formRef}
         action={createFormData}
-        className="flex flex-col justify-center bg-white p-6 rounded-xl shadow-xl"
+        className="flex flex-col justify-center w-full bg-white p-6 rounded-xl shadow-xl"
       >
         <div className="mb-4">
           <label

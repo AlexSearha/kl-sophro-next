@@ -39,7 +39,7 @@ export default function ContactForm() {
   }, [data, isError]);
 
   return (
-    <div className="w-full max-w-[500px] px-3 md:w-1/2">
+    <div className="flex flex-col w-full max-w-[500px] px-3 md:w-1/2">
       <form
         ref={formRef}
         action={createFormData}

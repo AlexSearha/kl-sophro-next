@@ -96,7 +96,7 @@ export default function LoginPage() {
 
   return (
     <authContext.Provider value={{ state, dispatch }}>
-      <div className="flex flex-col items-center my-4 h-auto">
+      <div className="flex flex-col items-center w-full my-4 h-auto">
         <div className="flex justify-center bg-white gap-4 shadow p-2 mb-10 rounded ">
           <button
             onClick={() => setIsLogin(true)}

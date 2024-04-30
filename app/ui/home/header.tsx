@@ -12,7 +12,7 @@ export function Header() {
   const connected = true;
 
   return (
-    <header className="flex mx-auto justify-between items-center py-5 px-5 max-w-7xl md:py-10 md:px-14 ">
+    <header className="flex w-full justify-between items-center py-5 px-5 md:max-w-7xl md:py-10 md:px-14 ">
       <Link href="/">
         <Image src={Logo} width={205} alt="Logo de Katia Lemaire Sophrologue" />
       </Link>

@@ -6,8 +6,8 @@ export function Footer() {
   const year = date.getFullYear();
 
   return (
-    <footer className="bg-greena-600 text-white px-6 py-10">
-      <div className="mx-auto max-w-6xl">
+    <footer className="bg-greena-600 text-white w-full px-6 py-10">
+      <div className="max-w-6xl">
         <div className="flex flex-col-reverse items-center gap-6 mb-10 md:flex-row">
           <div className="flex flex-col items-center gap-2 md:w-1/2">
             <h4 className="text-center">{`Besoin d'un rendez-vous?`}</h4>
