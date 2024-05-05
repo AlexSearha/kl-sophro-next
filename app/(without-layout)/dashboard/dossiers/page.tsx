@@ -47,7 +47,6 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
                 <th scope="col">ID</th>
                 <th scope="col">Client</th>
                 <th scope="col">Protocole</th>
-                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody className="mt-2">
@@ -55,9 +54,6 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
                 <td>1</td>
                 <td>Alexis Marouf</td>
                 <td>Peur du vide</td>
-                <td className="flex justify-center gap-2">
-                  <MagnifyingGlassIcon className="h-5 w-5 transition-colors hover:text-greena-400" />
-                </td>
               </tr>
             </tbody>
           </table>
