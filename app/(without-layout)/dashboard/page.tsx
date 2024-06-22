@@ -2,6 +2,7 @@
 
 import CardRendezVous from '@/app/ui/dashboard/cardRendezVous';
 import { lusitana } from '@/app/ui/fonts';
+import PaginationElement from '@/app/ui/pagination';
 import { useEffect, useState } from 'react';
 
 const appointments = [
@@ -35,6 +36,48 @@ const appointments = [
     fullname: 'Wei Chen',
     address: '88 Nanjing Road, Shanghai, China',
   },
+  {
+    id: 6,
+    date: 'Vendredi 25 Mai 2024',
+    fullname: 'Sophie Dupont',
+    address: '15 avenue des Champs-Élysées, 75008 Paris',
+  },
+  {
+    id: 7,
+    date: 'Samedi 26 Mai 2024',
+    fullname: 'Liam Brown',
+    address: '1234 Elm Street, Springfield, USA',
+  },
+  {
+    id: 8,
+    date: 'Dimanche 27 Mai 2024',
+    fullname: 'Ana Silva',
+    address: '456 Rua das Flores, São Paulo, Brazil',
+  },
+  {
+    id: 9,
+    date: 'Lundi 28 Mai 2024',
+    fullname: 'Oliver Müller',
+    address: '789 Hauptstraße, Berlin, Germany',
+  },
+  {
+    id: 10,
+    date: 'Mardi 29 Mai 2024',
+    fullname: 'Aisha Hassan',
+    address: '10 Sheikh Zayed Road, Dubai, UAE',
+  },
+  {
+    id: 11,
+    date: 'Mercredi 30 Mai 2024',
+    fullname: 'Hiroshi Tanaka',
+    address: '100 Shibuya Crossing, Tokyo, Japan',
+  },
+  {
+    id: 12,
+    date: 'Jeudi 31 Mai 2024',
+    fullname: 'Amelie Leclerc',
+    address: '20 rue de la République, 69002 Lyon',
+  },
 ];
 
 export default function DashboardPage() {
@@ -42,19 +85,26 @@ export default function DashboardPage() {
   const [filteredAppointments, setFilteredAppointments] =
     useState(appointments);
   const [openModal, setOpenModal] = useState(false);
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
 
-  const handleChange = (event: any) => {
-    setSearchText(event.target.value);
-  };
+  // Get current posts
+  const indexOfLastAppointments = currentPage * postsPerPage;
+  const indexOfFirstAppointments = indexOfLastAppointments - postsPerPage;
+  const currentAppointments = filteredAppointments.slice(
+    indexOfFirstAppointments,
+    indexOfLastAppointments
+  );
 
   useEffect(() => {
-    const filteredAppointments = appointments.filter((appointment) => {
+    const filtered = appointments.filter((appointment) => {
       return (
         appointment.fullname.toLowerCase().includes(searchText.toLowerCase()) ||
         appointment.address.toLowerCase().includes(searchText.toLowerCase())
       );
     });
-    setFilteredAppointments(filteredAppointments);
+    setFilteredAppointments(filtered);
   }, [searchText]);
 
   return (
@@ -77,12 +127,12 @@ export default function DashboardPage() {
             autoComplete="off"
             value={searchText}
             placeholder="Recherche"
-            onChange={handleChange}
+            onChange={(event) => setSearchText(event.target.value)}
             className="focus:ring-greena-400 focus:border-greena-400 rounded"
           />
         </div>
         <div id="card-container" className="flex flex-col w-full">
-          {filteredAppointments.map((appointment) => (
+          {currentAppointments.map((appointment) => (
             <CardRendezVous
               key={appointment.id}
               id={appointment.id}
@@ -94,6 +144,12 @@ export default function DashboardPage() {
             />
           ))}
         </div>
+        <PaginationElement
+          currentPage={currentPage}
+          postsPerPage={postsPerPage}
+          totalPosts={filteredAppointments.length}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );

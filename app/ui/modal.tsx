@@ -21,14 +21,14 @@ export default function ModalGeneric({ ...props }: ModalProps) {
           >
             {title}
           </h1>
-          <p className="mb-6">{content}</p>
+          <p className="mb-1">{content}</p>
           <div className="flex gap-2">
-            <button className=" transition p-1 rounded shadow ring-1 ring-slate-300 hover:bg-greena-400 hover:text-white">
+            <button className="flex justify-center items-center transition hover:font-bold p-2 rounded shadow ring-1 ring-slate-300 hover:bg-greena-400 hover:text-white">
               Oui
             </button>
             <button
               onClick={() => cancelAction()}
-              className="transition p-1 rounded shadow text-white bg-red-600 hover:bg-red-800"
+              className="flex justify-center items-center transition p-2 hover:font-bold rounded shadow text-white bg-red-600 hover:bg-red-800"
             >
               Non
             </button>

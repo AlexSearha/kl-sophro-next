@@ -97,7 +97,21 @@ export interface ClientProps {
   phone: string;
 }
 
+export interface ClientDossierProps {
+  id: number;
+  lastName: string;
+  firstName: string;
+  protocol: string;
+}
+
 // Providers
 export type adminReducerInitialValuesProps = {
   openModal: boolean;
 };
+
+export interface PaginateProps {
+  postsPerPage: number;
+  totalPosts: number;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+}

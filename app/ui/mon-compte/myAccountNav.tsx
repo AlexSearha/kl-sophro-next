@@ -27,10 +27,10 @@ export default function MyAccountNav() {
   };
 
   return (
-    <div className="flex flex-col justify-between h-full">
-      <div id="nav-menu w-full">
+    <div className="flex-grow">
+      <div id="nav-menu" className="flex justify-center">
         <nav>
-          <ul className="flex flex-col gap-3 items-center text-xl ">
+          <ul className="flex gap-4 items-center text-xl ">
             <li
               className={`transition-all ${
                 pathName() === '/mon-compte'
@@ -39,7 +39,7 @@ export default function MyAccountNav() {
               }`}
             >
               <Link href="/mon-compte" className="h-10 w-full p-1">
-                Dashboard
+                Accueil
               </Link>
             </li>
             <li
@@ -50,7 +50,7 @@ export default function MyAccountNav() {
               }`}
             >
               <Link href="/mon-compte/dossiers" className="h-10 w-full p-1">
-                Dossiers
+                Rendez-vous
               </Link>
             </li>
             <li
@@ -61,39 +61,11 @@ export default function MyAccountNav() {
               }`}
             >
               <Link href="/mon-compte/clients" className="h-10 w-full p-1">
-                Clients
-              </Link>
-            </li>
-            <li
-              className={`transition-all ${
-                pathName() === '/mon-compte/rendez-vous'
-                  ? 'bg-greena-500 p-1 text-white rounded font-bold'
-                  : 'hover:text-greena-400'
-              }`}
-            >
-              <Link href="/mon-compte/rendez-vous" className="h-10 w-full p-1">
-                Rendez-vous
+                Sécurité
               </Link>
             </li>
           </ul>
         </nav>
-      </div>
-      <div className="flex justify-center items-center h-10 w-full relative">
-        <PowerIcon
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={handleClick}
-          className="h-7 w-7 text-white/75 hover:text-white/40 cursor-pointer"
-          aria-hidden="true"
-        />
-        <div
-          id="popover-logout"
-          className={`absolute -bottom-6 left-0 h-6 text-sm w-full text-white flex justify-center items-center transition-opacity transition-height duration-300 ${
-            isFocus ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          Se déconnecter
-        </div>
       </div>
     </div>
   );

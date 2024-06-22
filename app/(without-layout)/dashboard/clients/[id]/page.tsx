@@ -20,10 +20,8 @@ export default function SingleClientPage({
 
   return (
     <>
-      <h1
-        className={`${lusitana.className} text-3xl text-greena-500 font-bold`}
-      >
-        Single Client
+      <h1 className={`${lusitana.className} text-3xl text-greena-500 font-bold`}>
+        Informations Client
       </h1>
       <div
         id="single-client-container"
@@ -54,40 +52,27 @@ export default function SingleClientPage({
               )}
             </div>
           </div>
-          <div
-            id="client-infos-container"
-            className="flex flex-col gap-4 items-center w-1/2"
-          >
+          <div id="client-infos-container" className="flex flex-col gap-4 items-center w-1/2">
             <div>
-              <h3
-                className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}
-              >
+              <h3 className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}>
                 Nom
               </h3>
               <p className="italic">Alexis Marouf</p>
             </div>
             <div>
-              <h3
-                className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}
-              >
+              <h3 className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}>
                 Adresse
               </h3>
-              <p className="italic">
-                22 rue des tisserands, 56190 Noyal-Muzillac
-              </p>
+              <p className="italic">22 rue des tisserands, 56190 Noyal-Muzillac</p>
             </div>
             <div>
-              <h3
-                className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}
-              >
+              <h3 className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}>
                 Téléphone
               </h3>
               <p className="italic">06 26 90 40 74</p>
             </div>
             <div>
-              <h3
-                className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}
-              >
+              <h3 className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}>
                 Email
               </h3>
               <a
@@ -98,21 +83,15 @@ export default function SingleClientPage({
               </a>
             </div>
             <div>
-              <h3
-                className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}
-              >
+              <h3 className={`${lusitana.className} font-bold text-center text-xl text-greena-500`}>
                 Dossier
               </h3>
               <button
                 type="button"
                 className="flex gap-2 items-center w-auto h-10 px-4 text-white font-bold rounded transition-all bg-greena-400 hover:bg-greena-500"
-                onClick={() => router.push('/dashboard/client/2/dossier')}
+                onClick={() => router.push('/dashboard/dossiers/2')}
               >
-                <FolderIcon
-                  height={20}
-                  width={20}
-                  className="text-white/75 hover:text-white/40"
-                />
+                <FolderIcon height={20} width={20} className="text-white/75 hover:text-white/40" />
                 <p>Accès au dossier</p>
               </button>
             </div>
