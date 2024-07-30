@@ -16,19 +16,15 @@ export default function ModalGeneric({ ...props }: ModalProps) {
         className="absolute top-0 left-0 z-5 h-full w-full flex justify-center items-center"
       >
         <div className="flex flex-col gap-3 p-4 rounded-lg bg-white shadow-lg border-slate-300 border-2 z-10 m-4 w-full h-auto md:w-1/2 md:h-1/4">
-          <h1
-            className={`text-3xl ${lusitana.className} text-greena-500 font-bold`}
-          >
-            {title}
-          </h1>
+          <h1 className={`text-3xl ${lusitana.className} text-greena-500 font-bold`}>{title}</h1>
           <p className="mb-1">{content}</p>
           <div className="flex gap-2">
-            <button className="flex justify-center items-center transition hover:font-bold p-2 rounded shadow ring-1 ring-slate-300 hover:bg-greena-400 hover:text-white">
+            <button className="flex justify-center items-center transition p-2 rounded shadow ring-1 ring-slate-300 hover:bg-greena-400 hover:text-white">
               Oui
             </button>
             <button
               onClick={() => cancelAction()}
-              className="flex justify-center items-center transition p-2 hover:font-bold rounded shadow text-white bg-red-600 hover:bg-red-800"
+              className="flex justify-center items-center transition p-2 rounded shadow text-white bg-red-600 hover:bg-red-800"
             >
               Non
             </button>

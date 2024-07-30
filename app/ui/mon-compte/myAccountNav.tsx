@@ -44,12 +44,12 @@ export default function MyAccountNav() {
             </li>
             <li
               className={`transition-all ${
-                pathName() === '/mon-compte/dossiers'
+                pathName() === '/mon-compte/rdv'
                   ? 'bg-greena-500 p-1 text-white rounded font-bold'
                   : 'hover:text-greena-400'
               }`}
             >
-              <Link href="/mon-compte/dossiers" className="h-10 w-full p-1">
+              <Link href="/mon-compte/rdv" className="h-10 w-full p-1">
                 Rendez-vous
               </Link>
             </li>

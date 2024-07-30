@@ -4,17 +4,13 @@ import { use, useContext, useEffect, useRef } from 'react';
 import { lusitana } from '../fonts';
 import Link from 'next/link';
 import LoadingSubmitForm from '../contact/Loading';
-import {
-  AlertErrorNotification,
-  AlertSuccessNotification,
-} from '../alerte-notification';
-import { authContext } from '@/app/(with-layout)/auth/page';
+import { AlertErrorNotification, AlertSuccessNotification } from '../alerte-notification';
+import { authContext } from '@/app/(with-layout)/authentification/page';
 
 export default function SignupForm() {
   const { state, dispatch } = useContext(authContext);
   const formRef = useRef(null);
-  const { fetchData, isLoading, isError, data } =
-    useLazyPostFetchData<LoginFormResponse>();
+  const { fetchData, isLoading, isError, data } = useLazyPostFetchData<LoginFormResponse>();
 
   async function loginUser(formData: FormData) {
     const rowFormData = {
@@ -64,10 +60,7 @@ export default function SignupForm() {
       >
         <div className="flex gap-2">
           <div className="mb-4">
-            <label
-              htmlFor="lastname"
-              className={`${lusitana.className} block font-bold text-xl`}
-            >
+            <label htmlFor="lastname" className={`${lusitana.className} block font-bold text-xl`}>
               Nom
             </label>
             <input
@@ -88,10 +81,7 @@ export default function SignupForm() {
             />
           </div>
           <div className="mb-4">
-            <label
-              htmlFor="firstname"
-              className={`${lusitana.className} block font-bold text-xl`}
-            >
+            <label htmlFor="firstname" className={`${lusitana.className} block font-bold text-xl`}>
               Prénom
             </label>
             <input
@@ -113,10 +103,7 @@ export default function SignupForm() {
           </div>
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="phone"
-            className={`${lusitana.className} block font-bold text-xl`}
-          >
+          <label htmlFor="phone" className={`${lusitana.className} block font-bold text-xl`}>
             Téléphone
           </label>
           <input
@@ -137,10 +124,7 @@ export default function SignupForm() {
           />
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="email"
-            className={`${lusitana.className} block font-bold text-xl`}
-          >
+          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>
             Email
           </label>
           <input
@@ -161,10 +145,7 @@ export default function SignupForm() {
           />
         </div>
         <div className="mb-4">
-          <label
-            htmlFor="password"
-            className={`${lusitana.className} block font-bold text-xl`}
-          >
+          <label htmlFor="password" className={`${lusitana.className} block font-bold text-xl`}>
             Mot de passe
           </label>
           <input
@@ -193,9 +174,7 @@ export default function SignupForm() {
         {isError ? (
           <AlertErrorNotification message="Une erreur s'est produite lors de la connexion" />
         ) : null}
-        {data ? (
-          <AlertSuccessNotification message="Vous êtes connecté !" />
-        ) : null}
+        {data ? <AlertSuccessNotification message="Vous êtes connecté !" /> : null}
       </form>
     </div>
   );
