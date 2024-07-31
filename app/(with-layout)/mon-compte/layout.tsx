@@ -1,16 +1,12 @@
 import MyAccountNav from '@/app/ui/mon-compte/myAccountNav';
 
-export default function MyaccountLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MyaccountLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="w-full">
-      <div className="w-full h-full md:p-12">
+    <section className="w-full grow">
+      <div className="w-full md:p-12">
         <MyAccountNav />
       </div>
-      <div className="flex-grow p-6 md:p-12 md:overflow-auto">{children}</div>
+      <div className="grow p-6 md:p-12 md:overflow-auto">{children}</div>
     </section>
   );
 }

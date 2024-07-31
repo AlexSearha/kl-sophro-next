@@ -23,15 +23,13 @@ export default function AdminCalendarForm() {
       commentary: inputValue,
     };
     {
-      /* TODO: Fetch vers la bonne route */
+      /*  */
     }
     if (rowFormData.date && rowFormData.hour) {
       console.log(JSON.stringify(rowFormData));
       //   fetchData('http://localhost:3001/login', rowFormData);
     } else {
-      setErrorMessage(
-        'Veuillez selectionner une date et une heure de rendez-vous'
-      );
+      setErrorMessage('Veuillez selectionner une date et une heure de rendez-vous');
     }
   }
 
@@ -43,11 +41,7 @@ export default function AdminCalendarForm() {
 
   return (
     <>
-      <form
-        ref={formRef}
-        action={postAppointment}
-        className="flex flex-col justify-center gap-2"
-      >
+      <form ref={formRef} action={postAppointment} className="flex flex-col justify-center gap-2">
         <CalendarElement setDateValue={setDateValue} />
         <SelectElement setSelectValue={setSelectValue} />
         <InputElement setInputValue={setInputValue} />
@@ -57,13 +51,9 @@ export default function AdminCalendarForm() {
         >
           {isLoading ? <LoadingSubmitForm /> : 'Réserver'}
         </button>
-        {isError ? (
-          <AlertErrorNotification message="Une erreur s'est produite" />
-        ) : null}
+        {isError ? <AlertErrorNotification message="Une erreur s'est produite" /> : null}
       </form>
-      {errorMessage.length > 0 ? (
-        <AlertErrorNotification message={errorMessage} />
-      ) : null}
+      {errorMessage.length > 0 ? <AlertErrorNotification message={errorMessage} /> : null}
     </>
   );
 }
