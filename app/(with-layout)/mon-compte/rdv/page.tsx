@@ -6,7 +6,7 @@ import 'dayjs/locale/fr';
 
 export default function RendezVousPage() {
   return (
-    <div className="flex justify-evenly h-full rounded-md py-4">
+    <div className="flex flex-col-reverse gap-10 md:flex-row justify-evenly items-center md:items-start h-full rounded-md py-4">
       <div className="flex flex-col gap-4">
         <h2 className={`text-3xl ${lusitana.className} text-greena-500`}>Reserver votre rendez-vous</h2>
         <div className="bg-white shadow max-w-[320px] w-auto rounded">

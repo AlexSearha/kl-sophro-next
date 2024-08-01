@@ -30,7 +30,7 @@ export default function MyAccountNav() {
     <div className="flex-grow">
       <div id="nav-menu" className="flex justify-center">
         <nav>
-          <ul className="flex gap-4 items-center text-xl ">
+          <ul className="flex gap-4 items-center md:text-xl ">
             <li
               className={`transition-all ${
                 pathName() === '/mon-compte'
