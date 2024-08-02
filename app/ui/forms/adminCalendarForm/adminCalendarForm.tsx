@@ -5,9 +5,13 @@ import CalendarElement from '../CalendarElement';
 import LoadingSubmitForm from '../../contact/Loading';
 import SelectElement from './elements/SelectElement';
 import InputElement from './elements/InputElement';
+import { useModal } from '@/app/lib/providers/modalProvider';
+import ValidationModal from '../../modals/ValidationModal';
+import { dateIsoToString } from '@/app/lib/date-format';
 
 export default function AdminCalendarForm() {
   const { fetchData, isLoading, isError, data } = useLazyPostFetchData();
+  const { dispatch } = useModal();
 
   const [errorMessage, setErrorMessage] = useState('');
   const [dateValue, setDateValue] = useState<Date | null | undefined>();
@@ -22,12 +26,21 @@ export default function AdminCalendarForm() {
       hour: selectValue,
       commentary: inputValue,
     };
-    {
-      /*  */
-    }
+
     if (rowFormData.date && rowFormData.hour) {
       console.log(JSON.stringify(rowFormData));
-      //   fetchData('http://localhost:3001/login', rowFormData);
+      const formatDate = dateIsoToString(rowFormData.date);
+      dispatch({
+        type: 'update_modal',
+        payload: {
+          title: 'Validation',
+          content: (
+            <ValidationModal
+              subTitle={`Validez vous le rendez vous du ${formatDate.date} à ${rowFormData.hour} ? `}
+            />
+          ),
+        },
+      });
     } else {
       setErrorMessage('Veuillez selectionner une date et une heure de rendez-vous');
     }
