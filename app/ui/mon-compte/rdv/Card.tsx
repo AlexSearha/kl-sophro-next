@@ -1,6 +1,8 @@
 import { dateIsoToString } from '@/app/lib/date-format';
+import { useModal } from '@/app/lib/providers/modalProvider';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DeleteModal from '../../modals/DeleteModal';
 
 interface RdvCardProps {
   title: string;
@@ -8,10 +10,17 @@ interface RdvCardProps {
 }
 
 export default function RdvCard({ title, date }: RdvCardProps) {
+  const { dispatch } = useModal();
   const { date: formatDate, hour: formatHour } = dateIsoToString(date);
 
   const handleDelete = () => {
-    console.log('handleDelete');
+    dispatch({
+      type: 'update_modal',
+      payload: {
+        title: 'Suppression',
+        content: <DeleteModal subTitle="Voulez-vous vraiment supprimer le rendez vous ?" />,
+      },
+    });
   };
 
   const handleEdit = () => {
@@ -19,7 +28,7 @@ export default function RdvCard({ title, date }: RdvCardProps) {
   };
 
   return (
-    <div className="flex justify-between items-center h-auto border-2 p-2 bg-white border-black/15 shadow-sm">
+    <div className="flex justify-between items-center h-auto border-2 p-2 bg-white border-black/15 shadow-sm rounded-sm">
       <div className="flex flex-col gap-1">
         <h3 className="text-xl font-bold">{formatDate}</h3>
         <p className="text-lg text-greena-400 italic">{formatHour}</p>

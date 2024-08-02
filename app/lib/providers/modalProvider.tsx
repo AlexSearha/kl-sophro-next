@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, ReactNode, Dispatch, useContext } from 'react';
 
-type ModalWidth = 'full' | '1/2';
+type ModalWidth = 'auto' | 'full' | '1/2';
 
 interface ModalState {
   isShow?: boolean;
@@ -20,7 +20,7 @@ export const initialState: ModalState = {
   isShow: false,
   title: '',
   content: null,
-  width: 'full',
+  width: 'auto',
 };
 
 const ModalContext = createContext<ModalContextProps>({

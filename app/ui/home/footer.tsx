@@ -31,7 +31,7 @@ export function Footer() {
               target="_blank"
               className="flex justify-center items-center w-10 h-10 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
             >
-              <FontAwesomeIcon icon={faFacebook} className="text-blue-700 p-2" />
+              <FontAwesomeIcon icon={faFacebook} size="xl" className="text-blue-700 p-2" />
             </Link>
             {/* Youtube */}
             <Link
@@ -40,7 +40,7 @@ export function Footer() {
               target="_blank"
               className="flex justify-center items-center w-10 h-10 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
             >
-              <FontAwesomeIcon icon={faYoutube} className="text-red-700 p-2" />
+              <FontAwesomeIcon icon={faYoutube} size="xl" className="text-red-700 p-2" />
             </Link>
             {/* Instagram */}
             <Link
@@ -49,7 +49,7 @@ export function Footer() {
               target="_blank"
               className="flex justify-center items-center w-10 h-10 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
             >
-              <FontAwesomeIcon icon={faInstagram} className="text-pink-600 p-2" />
+              <FontAwesomeIcon icon={faInstagram} size="xl" className="text-pink-600 p-2" />
             </Link>
           </div>
         </div>
