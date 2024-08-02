@@ -55,17 +55,6 @@ export default function MyAccountNav() {
             </li>
             <li
               className={`transition-all ${
-                pathName() === '/mon-compte/informations'
-                  ? 'bg-greena-500 p-1 text-white rounded font-bold'
-                  : 'hover:text-greena-400'
-              }`}
-            >
-              <Link href="/mon-compte/informations" className="h-10 w-full p-1">
-                Infos
-              </Link>
-            </li>
-            <li
-              className={`transition-all ${
                 pathName() === '/mon-compte/dossier'
                   ? 'bg-greena-500 p-1 text-white rounded font-bold'
                   : 'hover:text-greena-400'
@@ -75,6 +64,18 @@ export default function MyAccountNav() {
                 Dossier
               </Link>
             </li>
+            <li
+              className={`transition-all ${
+                pathName() === '/mon-compte/informations'
+                  ? 'bg-greena-500 p-1 text-white rounded font-bold'
+                  : 'hover:text-greena-400'
+              }`}
+            >
+              <Link href="/mon-compte/informations" className="h-10 w-full p-1">
+                Infos
+              </Link>
+            </li>
+
             <li
               className={`transition-all ${
                 pathName() === '/mon-compte/securite'

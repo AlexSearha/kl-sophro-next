@@ -19,7 +19,7 @@ export default function RdvCard({ title, date }: RdvCardProps) {
   };
 
   return (
-    <div className="flex justify-between items-center h-auto border-2 p-2 bg-greena-500/10 border-black/15 shadow-md">
+    <div className="flex justify-between items-center h-auto border-2 p-2 bg-white border-black/15 shadow-sm">
       <div className="flex flex-col gap-1">
         <h3 className="text-xl font-bold">{formatDate}</h3>
         <p className="text-lg text-greena-400 italic">{formatHour}</p>

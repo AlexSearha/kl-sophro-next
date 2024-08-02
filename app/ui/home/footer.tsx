@@ -1,4 +1,5 @@
-import { FacebookIcon, InstagramIcon, YouTubeIcon } from '@/app/lib/icons';
+import { faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
 export function Footer() {
@@ -22,15 +23,30 @@ export function Footer() {
             {`© KATIA LEMAIRE SOPHROLOGUE - ${year}`} <br />{' '}
             {`Mentions légales - Politique de confidentialité - CGV`}
           </p>
-          <div id="socials-medias" className="flex justify-center md:w-1/2">
-            <Link href="https://www.facebook.com/KL-Sophrologue-100112158925622">
-              <FacebookIcon className="w-8 h-8 mr-4" aria-hidden="true" />
+          <div id="socials-medias" className="flex gap-2 justify-center md:w-1/2">
+            <Link
+              href="https://www.facebook.com/KL-Sophrologue-100112158925622"
+              id="social-fb"
+              target="_blank"
+              className="flex justify-center items-center w-9 h-9 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
+            >
+              <FontAwesomeIcon icon={faFacebook} size="sm" className="text-blue-700 p-2" />
             </Link>
-            <Link href="https://www.facebook.com/KL-Sophrologue-100112158925622">
-              <YouTubeIcon className="w-8 h-8 mr-4" aria-hidden="true" />
+            <Link
+              href="https://www.youtube.com/KL-Sophrologue-100112158925622"
+              id="social-yt"
+              target="_blank"
+              className="flex justify-center items-center w-9 h-9 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
+            >
+              <FontAwesomeIcon icon={faYoutube} size="sm" className="text-red-700 p-2" />
             </Link>
-            <Link href="https://www.facebook.com/KL-Sophrologue-100112158925622">
-              <InstagramIcon className="w-8 h-8 mr-4 " aria-hidden="true" />
+            <Link
+              href="https://www.instagram.com/KL-Sophrologue-100112158925622"
+              id="social-instagram"
+              target="_blank"
+              className="flex justify-center items-center w-9 h-9 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
+            >
+              <FontAwesomeIcon icon={faInstagram} size="sm" className="text-pink-600 p-2" />
             </Link>
           </div>
         </div>
