@@ -20,33 +20,36 @@ export function Footer() {
         </div>
         <div className="flex flex-col-reverse md:flex-row md:justify-between gap-4">
           <p className="text-center text-sm md:w-1/2">
-            {`© KATIA LEMAIRE SOPHROLOGUE - ${year}`} <br />{' '}
+            {`© KATIA LEMAIRE SOPHROLOGUE - ${year}`} <br />
             {`Mentions légales - Politique de confidentialité - CGV`}
           </p>
           <div id="socials-medias" className="flex gap-2 justify-center md:w-1/2">
+            {/* Facebook */}
             <Link
               href="https://www.facebook.com/KL-Sophrologue-100112158925622"
               id="social-fb"
               target="_blank"
-              className="flex justify-center items-center w-9 h-9 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
+              className="flex justify-center items-center w-10 h-10 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
             >
-              <FontAwesomeIcon icon={faFacebook} size="sm" className="text-blue-700 p-2" />
+              <FontAwesomeIcon icon={faFacebook} className="text-blue-700 p-2" />
             </Link>
+            {/* Youtube */}
             <Link
               href="https://www.youtube.com/KL-Sophrologue-100112158925622"
               id="social-yt"
               target="_blank"
-              className="flex justify-center items-center w-9 h-9 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
+              className="flex justify-center items-center w-10 h-10 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
             >
-              <FontAwesomeIcon icon={faYoutube} size="sm" className="text-red-700 p-2" />
+              <FontAwesomeIcon icon={faYoutube} className="text-red-700 p-2" />
             </Link>
+            {/* Instagram */}
             <Link
               href="https://www.instagram.com/KL-Sophrologue-100112158925622"
               id="social-instagram"
               target="_blank"
-              className="flex justify-center items-center w-9 h-9 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
+              className="flex justify-center items-center w-10 h-10 bg-white transition-colors hover:bg-slate-400 rounded-full cursor-pointer"
             >
-              <FontAwesomeIcon icon={faInstagram} size="sm" className="text-pink-600 p-2" />
+              <FontAwesomeIcon icon={faInstagram} className="text-pink-600 p-2" />
             </Link>
           </div>
         </div>

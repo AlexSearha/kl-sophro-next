@@ -1,37 +1,39 @@
+import { useModal } from '../lib/providers/modalProvider';
 import { lusitana } from './fonts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
-interface ModalProps {
-  title: string;
-  content: string;
-  cancelAction: () => void;
-}
+export default function ModalGeneric() {
+  const { Modal, dispatch } = useModal();
+  const { title, content, isShow, width } = Modal;
 
-export default function ModalGeneric({ ...props }: ModalProps) {
-  const { title, content, cancelAction } = props;
+  const handleCloseModal = () => {
+    dispatch({
+      type: 'clean_and_close_modal',
+    });
+  };
 
-  return (
-    <>
-      <div
-        id="modal"
-        className="absolute top-0 left-0 z-5 h-full w-full flex justify-center items-center"
-      >
-        <div className="flex flex-col gap-3 p-4 rounded-lg bg-white shadow-lg border-slate-300 border-2 z-10 m-4 w-full h-auto md:w-1/2 md:h-1/4">
-          <h1 className={`text-3xl ${lusitana.className} text-greena-500 font-bold`}>{title}</h1>
-          <p className="mb-1">{content}</p>
-          <div className="flex gap-2">
-            <button className="flex justify-center items-center transition p-2 rounded shadow ring-1 ring-slate-300 hover:bg-greena-400 hover:text-white">
-              Oui
-            </button>
-            <button
-              onClick={() => cancelAction()}
-              className="flex justify-center items-center transition p-2 rounded shadow text-white bg-red-600 hover:bg-red-800"
+  if (isShow) {
+    return (
+      <>
+        <div id="modal" className="absolute top-0 left-0 z-5 h-full w-full flex justify-center items-center">
+          <div
+            className={`flex flex-col gap-3 rounded-lg bg-white shadow-lg border-greena-500/50 border-2 z-10 m-4 h-auto w-${width} md:h-1/4`}
+          >
+            <div
+              id="modal-menu"
+              className="flex justify-between items-center h-12 p-3 border-b-2 border-greena-500/50"
             >
-              Non
-            </button>
+              <h1 className={`text-2xl font-bold capitalize ${lusitana.className} text-greena-500`}>
+                {title}
+              </h1>
+              <FontAwesomeIcon icon={faX} size="xl" className="cursor-pointer" onClick={handleCloseModal} />
+            </div>
+            {content}
           </div>
         </div>
-      </div>
-      <div className="fixed top-0 left-0 z-0 w-full h-full backdrop-blur-sm"></div>
-    </>
-  );
+        <div className="fixed top-0 left-0 z-0 w-full h-full backdrop-blur-sm"></div>
+      </>
+    );
+  }
 }
