@@ -5,13 +5,28 @@ import { usePathname } from 'next/navigation';
 import { CarRendezVousProps } from '@/app/types';
 import { TrashIcon } from '@heroicons/react/20/solid';
 import { PencilSquareIcon } from '@heroicons/react/20/solid';
+import { useModal } from '@/app/lib/providers/modalProvider';
+import DeleteModal from '../modals/DeleteModal';
 
 export default function CardRendezVous({ ...props }: CarRendezVousProps) {
-  const { date, fullName, address, id, openModal, setOpenModal } = props;
+  const { dispatch } = useModal();
+  const { date, fullName, address, id, setOpenModal } = props;
   const pathName = usePathname();
 
   const handleDelete = () => {
-    console.log('handleDelete');
+    console.log('CA MARCHE');
+
+    dispatch({
+      type: 'update_modal',
+      payload: {
+        title: 'Suppression',
+        content: (
+          <DeleteModal
+            subTitle={`Voulez-vous vraiment supprimer le rendez-vous du ${date} avec ${fullName} ?`}
+          />
+        ),
+      },
+    });
   };
 
   const handleOpenModal = () => {
@@ -62,7 +77,7 @@ export default function CardRendezVous({ ...props }: CarRendezVousProps) {
               className="transition-all hover:text-greena-400"
             />
           </button> */}
-            <button onClick={handleOpenModal}>
+            <button onClick={handleDelete}>
               <TrashIcon width={25} className="transition-all hover:text-red-700" />
             </button>
           </div>

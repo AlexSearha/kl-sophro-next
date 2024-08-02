@@ -8,9 +8,7 @@ import { useEffect, useState } from 'react';
 export default function DossiersPage({ params }: { params: { slug: string } }) {
   const [isHovered, setIsHovered] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const [filteredClients, setFilteredClients] = useState<ClientDossierProps[]>(
-    []
-  );
+  const [filteredClients, setFilteredClients] = useState<ClientDossierProps[]>([]);
 
   // pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -142,10 +140,7 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
   // Get current clients
   const indexOfLastClients = currentPage * postsPerPage;
   const indexOfFirstClients = indexOfLastClients - postsPerPage;
-  const currentClients = filteredClients.slice(
-    indexOfFirstClients,
-    indexOfLastClients
-  );
+  const currentClients = filteredClients.slice(indexOfFirstClients, indexOfLastClients);
   const handleAddNewFolder = () => {
     console.log('add new folder');
   };
@@ -155,19 +150,14 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
       (client) =>
         client.lastName.toLowerCase().includes(searchText.toLowerCase()) ||
         client.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
-        client.protocol
-          .toLocaleLowerCase()
-          .includes(searchText.toLocaleLowerCase())
+        client.protocol.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())
     );
     setFilteredClients(filteredClients);
   }, [searchText]);
 
   return (
     <>
-      <h1
-        id="mainTitle"
-        className={`${lusitana.className} text-4xl text-greena-500 font-bold`}
-      >
+      <h1 id="mainTitle" className={`${lusitana.className} text-4xl text-greena-500 font-bold`}>
         Dossiers Page
       </h1>
       <div id="folder-container" className="h-full mt-6">
@@ -179,9 +169,7 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
             className="flex justify-end items-center border-2 border-greena-500 text-greena-500 p-2 rounded transition-colors hover:bg-greena-500"
           >
             <PlusIcon className={`h-7 w-7 ${isHovered ? 'text-white' : ''}`} />
-            <p className={`font-bold ${isHovered ? 'text-white' : ''}`}>
-              Ajouter
-            </p>
+            <p className={`font-bold ${isHovered ? 'text-white' : ''}`}>Ajouter</p>
           </button>
           <input
             type="text"
@@ -204,8 +192,11 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
               </tr>
             </thead>
             <tbody className="mt-2 [&>*:nth-child(2n)]:bg-greena-400/10">
-              {currentClients.map((client) => (
-                <tr className="transition-all cursor-pointer hover:bg-slate-200 text-center hover:ring-1 hover:ring-slate-300">
+              {currentClients.map((client, index) => (
+                <tr
+                  key={index}
+                  className="transition-all cursor-pointer hover:bg-slate-200 text-center hover:ring-1 hover:ring-slate-300"
+                >
                   <td>{client.id}</td>
                   <td>
                     {client.firstName} {client.lastName}
