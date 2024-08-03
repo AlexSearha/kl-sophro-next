@@ -6,7 +6,7 @@ import '@/app/ui/globals.css';
 import { Header } from '../ui/home/header';
 import { Footer } from '../ui/home/footer';
 import { ModalProvider } from '../lib/providers/modalProvider';
-import ModalGeneric from '../ui/Modal';
+import ModalGeneric from '../ui/modal';
 
 // export const metadata: Metadata = {
 //   title: {
