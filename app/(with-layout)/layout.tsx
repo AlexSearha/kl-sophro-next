@@ -10,6 +10,7 @@ import ModalGeneric from '../ui/modal';
 import { usePathname } from 'next/navigation';
 import FooterClient from '../ui/home/footer-client';
 import { useEffect } from 'react';
+import useScreenDetect from '../lib/hooks/screen-detect';
 
 // export const metadata: Metadata = {
 //   title: {
@@ -26,6 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const urlPathName = usePathname();
+  const isMobileSize = useScreenDetect();
   const extractMonCompte = urlPathName.split('/');
   const isMonComptePresent = extractMonCompte.includes('mon-compte');
 
@@ -36,9 +38,9 @@ export default function RootLayout({
           className={`${roboto.className} antialiased bg-bgcolor-400 flex flex-col items-center w-full h-screen relative`}
           suppressHydrationWarning={true}
         >
-          <Header />
+          {isMonComptePresent && isMobileSize ? null : <Header />}
           {children}
-          {isMonComptePresent ? <FooterClient /> : <Footer />}
+          {isMonComptePresent && isMobileSize ? <FooterClient /> : <Footer />}
           <ModalGeneric />
         </body>
       </html>

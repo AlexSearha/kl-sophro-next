@@ -24,14 +24,10 @@ export default function Home() {
         <div className="flex flex-col items-center max-w-6xl justify-between gap-10 md:flex-row-reverse ">
           <Image src={chene} width={450} height={450} alt="Image d'un chêne" />
           <div className="flex flex-col items-center">
-            <h1
-              className={`text-center ${lusitana.className} text-4xl font-bold mb-3 md:text-5xl`}
-            >
+            <h1 className={`text-center ${lusitana.className} text-4xl font-bold mb-3 md:text-5xl`}>
               Cultivez votre bien-être
             </h1>
-            <p className="text-xl font-bold italic text-greena-400">
-              et récoltez la sérénité...
-            </p>
+            <p className="text-xl font-bold italic text-greena-400">et récoltez la sérénité...</p>
           </div>
         </div>
       </section>
@@ -46,28 +42,21 @@ export default function Home() {
             alt="Photo de Katia Lemaire"
           />
           <div className="flex flex-col gap-4 sm:max-w-2xl px-4">
-            <h2 className={`${lusitana.className} text-greena-400`}>
-              Qui suis-je ?
-            </h2>
+            <h2 className={`${lusitana.className} text-greena-400`}>Qui suis-je ?</h2>
             <h3 className="text-3xl font-bold">Katia Lemaire</h3>
             <p className="text-justify">
-              Intéressée depuis toujours par le développement personnel, j’ai
-              toujours eu la conviction qu’une de mes missions était d’aider les
-              autres. Les chemins étant vastes et nombreux dans le domaine du
-              bien-être, j’ai choisi après avoir exploré quelques pistes de me
-              tourner vers la méditation. Je l’ai pratiqué pendant des années et
-              la pratique encore aujourd’hui quotidiennement. J’ai créé ma
-              chaine pour proposer à tous des méditations guidées afin de
-              retrouver un minimum de sérénité.
+              Intéressée depuis toujours par le développement personnel, j’ai toujours eu la conviction qu’une
+              de mes missions était d’aider les autres. Les chemins étant vastes et nombreux dans le domaine
+              du bien-être, j’ai choisi après avoir exploré quelques pistes de me tourner vers la méditation.
+              Je l’ai pratiqué pendant des années et la pratique encore aujourd’hui quotidiennement. J’ai créé
+              ma chaine pour proposer à tous des méditations guidées afin de retrouver un minimum de sérénité.
               <br />
               <br />
-              Lorsque j’ai ressenti le besoin de devenir thérapeute, je me suis
-              intéressée à la sophrologie car elle était pour moi une méthode
-              qui combinait ce que j’aime apporter aux autres : la détente
-              émotionnelle et donc corporelle. Pour moi tout est lié de façon
-              intrinsèque. Quand ont se sent angoissé, triste, inquiet, le corps
-              nous envoi des signaux. Inversement quand le corps souffre, le
-              mental s’en ressens.
+              Lorsque j’ai ressenti le besoin de devenir thérapeute, je me suis intéressée à la sophrologie
+              car elle était pour moi une méthode qui combinait ce que j’aime apporter aux autres : la détente
+              émotionnelle et donc corporelle. Pour moi tout est lié de façon intrinsèque. Quand ont se sent
+              angoissé, triste, inquiet, le corps nous envoi des signaux. Inversement quand le corps souffre,
+              le mental s’en ressens.
             </p>
           </div>
         </div>
@@ -83,10 +72,7 @@ export default function Home() {
         </p>
       </section>
       {/* Section The sophrology*/}
-      <section
-        id="sophrology"
-        className="mx-auto my-16 mx-6 px-4 sm:max-w-2xl xl:max-w-5xl"
-      >
+      <section id="sophrology" className="my-16 mx-6 sm:max-w-2xl xl:max-w-5xl">
         <h2
           className={`text-center text-3xl font-bold ${lusitana.className} mb-8`}
         >{`Qu'est ce que la Sophrologie ?`}</h2>
@@ -113,9 +99,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center mt-12 xl:gap-20 xl:flex-row-reverse sm:gap-4">
           <div className="flex flex-col gap-2">
-            <h3
-              className={`text-start text-2xl font-bold ${lusitana.className} text-greena-400`}
-            >
+            <h3 className={`text-start text-2xl font-bold ${lusitana.className} text-greena-400`}>
               Les bienfaits
             </h3>
             <p className="text-justify">
@@ -151,9 +135,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center mt-12 xl:gap-20 xl:flex-row sm:gap-4">
           <div className="flex flex-col gap-2">
-            <h3
-              className={`text-start text-2xl font-bold ${lusitana.className} text-greena-400`}
-            >
+            <h3 className={`text-start text-2xl font-bold ${lusitana.className} text-greena-400`}>
               Pour qui ?
             </h3>
             <p className="text-justify">
@@ -179,9 +161,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center mt-12 xl:gap-20 xl:flex-row-reverse sm:gap-4">
           <div className="flex flex-col gap-2">
-            <h3
-              className={`text-start text-2xl font-bold ${lusitana.className} text-greena-400`}
-            >
+            <h3 className={`text-start text-2xl font-bold ${lusitana.className} text-greena-400`}>
               Pour qui ?
             </h3>
             <p className="text-justify">
@@ -216,9 +196,7 @@ export default function Home() {
       {/* Section How a session works? */}
       <section className="bg-monstera bg-no-repeat bg-center bg-cover">
         <div className="w-full h-full flex flex-col justify-center items-center py-6 px-2">
-          <h2
-            className={`${lusitana.className} text-white text-center text-3xl w-3/4`}
-          >
+          <h2 className={`${lusitana.className} text-white text-center text-3xl w-3/4`}>
             Comment se déroule une séance ?
           </h2>
           {/*Fist step */}
@@ -238,9 +216,7 @@ export default function Home() {
               title="Exercices de réspirations"
               description="Mouvements doux accompagnés de respirations pour détendre le corps."
               step={2}
-              IconImage={
-                <WindIcon className="w-20 h-20 mt-4" aria-hidden="true" />
-              }
+              IconImage={<WindIcon className="w-20 h-20 mt-4" aria-hidden="true" />}
               alt="Icone représentant le vent"
             />
             {/*Third step */}
@@ -248,9 +224,7 @@ export default function Home() {
               title="Lacher prise"
               description="Instant de détente et lâcher prise, ou vous vous laissez guider par ma voix."
               step={3}
-              IconImage={
-                <SofaIcon className="w-20 h-20 mt-4" aria-hidden="true" />
-              }
+              IconImage={<SofaIcon className="w-20 h-20 mt-4" aria-hidden="true" />}
               alt="Icone représentant un canapé"
             />
             {/*Fourth step */}
@@ -258,9 +232,7 @@ export default function Home() {
               title="Partage des ressentis"
               description="Instant de détente et lâcher prise, ou vous vous laissez guider par ma voix."
               step={4}
-              IconImage={
-                <TalkIcon className="w-20 h-20 mt-4" aria-hidden="true" />
-              }
+              IconImage={<TalkIcon className="w-20 h-20 mt-4" aria-hidden="true" />}
               alt="Icone représentant une discussion"
             />
           </div>
@@ -268,15 +240,8 @@ export default function Home() {
       </section>
 
       {/* Price section */}
-      <section
-        id="prices"
-        className="mx-auto h-auto w-full my-16 px-4 sm:max-w-2xl xl:max-w-5xl"
-      >
-        <h2
-          className={`text-center text-3xl font-bold ${lusitana.className} mb-8`}
-        >
-          Tarifs
-        </h2>
+      <section id="prices" className="mx-auto h-auto w-full my-16 px-4 sm:max-w-2xl xl:max-w-5xl">
+        <h2 className={`text-center text-3xl font-bold ${lusitana.className} mb-8`}>Tarifs</h2>
         <div
           id="price-card-container"
           className="flex flex-wrap w-full justify-center md:justify-between gap-3 md:gap-0"

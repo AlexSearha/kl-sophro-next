@@ -8,7 +8,10 @@ export default function FooterClient() {
   const urlPathName = usePathname();
   const activeCss = 'bg-greena-400 text-white';
   return (
-    <footer id="foter-client" className="h-20 border-t-2 border-black/15 w-full fixed bottom-0">
+    <footer
+      id="foter-client"
+      className="h-20 border-t-2 border-black/15 w-full fixed bottom-0 bg-white text-sm z-20"
+    >
       <div id="menu-footer-client-mobile" className="h-full flex items-center">
         <Link
           href="/mon-compte"

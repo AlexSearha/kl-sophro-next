@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { AlertErrorNotification } from '../../alerte-notification';
-import { useLazyPostFetchData } from '@/app/lib/hooks';
 import CalendarElement from '../CalendarElement';
 import LoadingSubmitForm from '../../contact/Loading';
 import SelectElement from './elements/SelectElement';
@@ -8,6 +7,7 @@ import InputElement from './elements/InputElement';
 import { useModal } from '@/app/lib/providers/modalProvider';
 import ValidationModal from '../../modals/ValidationModal';
 import { dateIsoToString } from '@/app/lib/date-format';
+import { useLazyPostFetchData } from '@/app/lib/hooks/fetching-hooks';
 
 export default function AdminCalendarForm() {
   const { fetchData, isLoading, isError, data } = useLazyPostFetchData();
