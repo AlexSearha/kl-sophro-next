@@ -7,6 +7,9 @@ import { Header } from '../ui/home/header';
 import { Footer } from '../ui/home/footer';
 import { ModalProvider } from '../lib/providers/modalProvider';
 import ModalGeneric from '../ui/modal';
+import { usePathname } from 'next/navigation';
+import FooterClient from '../ui/home/footer-client';
+import { useEffect } from 'react';
 
 // export const metadata: Metadata = {
 //   title: {
@@ -22,6 +25,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const urlPathName = usePathname();
+  const extractMonCompte = urlPathName.split('/');
+  const isMonComptePresent = extractMonCompte.includes('mon-compte');
+
   return (
     <ModalProvider>
       <html lang="fr">
@@ -31,7 +38,7 @@ export default function RootLayout({
         >
           <Header />
           {children}
-          <Footer />
+          {isMonComptePresent ? <FooterClient /> : <Footer />}
           <ModalGeneric />
         </body>
       </html>

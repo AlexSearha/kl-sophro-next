@@ -1,12 +1,14 @@
+'use client';
+import MainProvider from '@/app/lib/providers/mainProvider';
+import DashboardSideNav from '@/app/ui/dashboard/dashboardSideNav';
+import { Header } from '@/app/ui/home/header';
+import ModalGeneric from '@/app/ui/modal';
 import MyAccountNav from '@/app/ui/mon-compte/myAccountNav';
 
-export default function MyaccountLayout({ children }: { children: React.ReactNode }) {
+export default function MyAccountLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="w-full grow">
-      <div className="w-full md:p-12">
-        <MyAccountNav />
-      </div>
-      <div className="grow p-6 md:p-12 md:overflow-auto flex justify-center">{children}</div>
+    <section className="grow">
+      <h1>bite</h1>
     </section>
   );
 }
