@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 import MainProvider from '@/app/lib/providers/mainProvider';
 import DashboardSideNav from '@/app/ui/dashboard/dashboardSideNav';
-import ModalGeneric from '@/app/ui/Modal';
+import ModalGeneric from '@/app/ui/modal';
 import '@/app/ui/globals.css';
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <div className="w-full flex-col h-full bg-greena-500 md:w-64 md:p-12">
               <DashboardSideNav />
             </div>
-            <div className="flex-grow p-6 md:p-12 md:overflow-auto">{children}</div>
+            <div className="flex-grow p-6 md:p-12 md:overflow-auto flex justify-center">{children}</div>
           </div>
           <ModalGeneric />
         </body>

@@ -6,7 +6,7 @@ export default function MyaccountLayout({ children }: { children: React.ReactNod
       <div className="w-full md:p-12">
         <MyAccountNav />
       </div>
-      <div className="grow p-6 md:p-12 md:overflow-auto">{children}</div>
+      <div className="grow p-6 md:p-12 md:overflow-auto flex justify-center">{children}</div>
     </section>
   );
 }
