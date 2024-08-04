@@ -38,7 +38,8 @@ export default function RootLayout({
           className={`${roboto.className} antialiased bg-bgcolor-400 flex flex-col items-center w-full h-screen relative`}
           suppressHydrationWarning={true}
         >
-          {isMonComptePresent && isMobileSize ? null : <Header />}
+          {/* {isMonComptePresent && isMobileSize ? null : <Header />} */}
+          <Header />
           {children}
           {isMonComptePresent && isMobileSize ? <FooterClient /> : <Footer />}
           <ModalGeneric />
