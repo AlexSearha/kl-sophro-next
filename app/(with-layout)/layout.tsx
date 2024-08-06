@@ -6,11 +6,12 @@ import '@/app/ui/globals.css';
 import { Header } from '../ui/home/header';
 import { Footer } from '../ui/home/footer';
 import { ModalProvider } from '../lib/providers/modalProvider';
-import ModalGeneric from '../ui/modal';
 import { usePathname } from 'next/navigation';
 import FooterClient from '../ui/home/footer-client';
 import { useEffect } from 'react';
 import useScreenDetect from '../lib/hooks/screen-detect';
+import AntThemeProvider from '../lib/providers/antThemeProvider';
+import ModalGeneric from '../ui/modal';
 
 // export const metadata: Metadata = {
 //   title: {
@@ -33,18 +34,20 @@ export default function RootLayout({
 
   return (
     <ModalProvider>
-      <html lang="fr">
-        <body
-          className={`${roboto.className} antialiased bg-bgcolor-400 flex flex-col items-center w-full h-screen relative`}
-          suppressHydrationWarning={true}
-        >
-          {/* {isMonComptePresent && isMobileSize ? null : <Header />} */}
-          <Header />
-          {children}
-          {isMonComptePresent && isMobileSize ? <FooterClient /> : <Footer />}
-          <ModalGeneric />
-        </body>
-      </html>
+      <AntThemeProvider>
+        <html lang="fr">
+          <body
+            className={`${roboto.className} antialiased bg-bgcolor-400 flex flex-col items-center w-full h-screen relative`}
+            suppressHydrationWarning={true}
+          >
+            {/* {isMonComptePresent && isMobileSize ? null : <Header />} */}
+            <Header />
+            {children}
+            {isMonComptePresent && isMobileSize ? <FooterClient /> : <Footer />}
+            <ModalGeneric />
+          </body>
+        </html>
+      </AntThemeProvider>
     </ModalProvider>
   );
 }
