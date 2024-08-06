@@ -51,7 +51,7 @@ export default function FooterClient() {
           }`}
         >
           <FontAwesomeIcon icon={faUserGear} size="xl" />
-          <p>Compte</p>
+          <p>Parametres</p>
         </Link>
       </div>
     </footer>

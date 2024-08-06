@@ -20,7 +20,7 @@ export function Header() {
       <div className="flex flex-col">
         <Menu as="div" className="relative inline-block text-left">
           <button className="inline-flex w-full font-bold justify-center rounded-md transition-colors duration-300 bg-greena-400 px-4 py-2 text-sm text-white hover:bg-greena-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-            <Link href="/dashboard">Prendre RDV</Link>
+            <Link href="/mon-compte/rdv">Prendre RDV</Link>
           </button>
         </Menu>
 
