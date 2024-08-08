@@ -6,6 +6,16 @@ import path from 'node:path/win32';
 
 export default function FooterClient() {
   const urlPathName = usePathname();
+
+  function test(stringToArray: string, stringToSearch: string) {
+    const toArray = stringToArray.split('/');
+    const result = toArray.find((elem) => elem === stringToSearch);
+
+    if (result !== undefined) {
+      return true;
+    }
+    return false;
+  }
   const activeCss = 'bg-greena-400 text-white';
   return (
     <footer
@@ -27,7 +37,7 @@ export default function FooterClient() {
           href="/mon-compte/rdv"
           id="appointment-button "
           className={`flex flex-col items-center justify-center h-full w-1/4 ${
-            urlPathName === '/mon-compte/rdv' ? activeCss : ''
+            test(urlPathName, 'rdv') ? activeCss : ''
           }`}
         >
           <FontAwesomeIcon icon={faCalendarDays} size="xl" />
@@ -37,7 +47,7 @@ export default function FooterClient() {
           href="/mon-compte/dossier"
           id="folder-button "
           className={`flex flex-col h-full justify-center items-center w-1/4 ${
-            urlPathName === '/mon-compte/dossier' ? activeCss : ''
+            test(urlPathName, 'dossier') ? activeCss : ''
           }`}
         >
           <FontAwesomeIcon icon={faFolderOpen} size="xl" />
@@ -47,7 +57,7 @@ export default function FooterClient() {
           href="/mon-compte/parametres"
           id="user-parameter-button "
           className={`flex flex-col items-center w-1/4 h-full justify-center ${
-            urlPathName === '/mon-compte/parametres' ? activeCss : ''
+            test(urlPathName, 'parametres') ? activeCss : ''
           }`}
         >
           <FontAwesomeIcon icon={faUserGear} size="xl" />
