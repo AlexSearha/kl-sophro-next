@@ -65,7 +65,7 @@ const SecurityPage = () => {
         Suppression du compte
       </h2>
       <div className="flex justify-center items-center">
-        <Button className="bg-red-700 text-white hover:bg-red-900">Supprimer</Button>
+        <Button>Supprimer</Button>
       </div>
     </div>
   );
