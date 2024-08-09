@@ -20,8 +20,12 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 
 const SecurityPage = () => {
   return (
-    <>
-      <h1 className={`text-3xl text-greena-500 ${lusitana.className}`}>Modification du mot de passe</h1>
+    <div className="mb-32">
+      {/* Password changing */}
+      <h1 id="parameter-title" className={`text-4xl text-center text-greena-500 ${lusitana.className}`}>
+        Parametres
+      </h1>
+      <h2 className={`text-2xl text-greena-500 mt-8 ${lusitana.className}`}>Modification du mot de passe</h2>
       <div id="form-content" className="flex justify-center mt-6">
         <Form
           name="basic"
@@ -50,17 +54,20 @@ const SecurityPage = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              // style={{ background: TailwindTheme.extend.colors.greena[400] }}
-            >
+            <Button type="primary" htmlType="submit">
               Modifier
             </Button>
           </Form.Item>
         </Form>
       </div>
-    </>
+      {/* Delete account */}
+      <h2 className={`text-2xl text-greena-500 mt-8 text-center ${lusitana.className}`}>
+        Suppression du compte
+      </h2>
+      <div className="flex justify-center items-center">
+        <Button className="bg-red-700 text-white hover:bg-red-900">Supprimer</Button>
+      </div>
+    </div>
   );
 };
 
