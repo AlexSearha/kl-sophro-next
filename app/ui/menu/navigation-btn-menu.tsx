@@ -3,11 +3,7 @@ import { Bars3Icon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
 import { Fragment } from 'react';
 
-export default function NavigationBtnMenu({
-  connected,
-}: {
-  connected: boolean;
-}) {
+export default function NavigationBtnMenu({ connected }: { connected: boolean }) {
   const router = useRouter();
 
   return (
@@ -15,10 +11,7 @@ export default function NavigationBtnMenu({
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center px-2 py-3">
-            <Bars3Icon
-              className="h-7 w-7 text-black/75 hover:text-black/40"
-              aria-hidden="true"
-            />
+            <Bars3Icon className="h-7 w-7 text-black/75 hover:text-black/40" aria-hidden="true" />
           </Menu.Button>
         </div>
         <Transition
@@ -30,7 +23,7 @@ export default function NavigationBtnMenu({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-1 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-1 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none z-10">
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (

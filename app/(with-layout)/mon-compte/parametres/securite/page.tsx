@@ -23,8 +23,7 @@ const SecurityPage = () => {
     <>
       <h1 className={`text-3xl text-greena-500 ${lusitana.className}`}>Modification du mot de passe</h1>
       <div id="form-content" className="flex justify-center mt-6">
-        <Button type="primary">Coucou</Button>
-        {/* <Form
+        <Form
           name="basic"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
@@ -59,7 +58,7 @@ const SecurityPage = () => {
               Modifier
             </Button>
           </Form.Item>
-        </Form> */}
+        </Form>
       </div>
     </>
   );

@@ -1,5 +1,16 @@
 import { ConfigProvider } from 'antd';
+import { TailwindTheme } from '@/tailwind.config';
 
 export default function AntThemeProvider({ children }: { children: React.ReactNode }) {
-  return <ConfigProvider>{children}</ConfigProvider>;
+  return (
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: TailwindTheme.extend.colors.greena[400],
+        },
+      }}
+    >
+      {children}
+    </ConfigProvider>
+  );
 }
