@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { FetchDataProps, FetchLazyDataProps, FetchLazyPostDataProps } from '../../types';
-import { instannceApiBackend } from '../axios-instances';
+import { FetchDataProps, FetchLazyPostDataProps } from '../../types';
+import { instannceApiBackend, instanceApiAddress } from '../axios-instances';
+
 {
   /* TODO: Completer les hooks */
 }
@@ -15,11 +16,7 @@ export const useGetFetchData = <T>(url: string): FetchDataProps<T> => {
       setIsLoading(true);
 
       try {
-        const response = await instannceApiBackend.get(url, {
-          headers: {
-            'content-type': 'application/json',
-          },
-        });
+        const response = await instannceApiBackend.get(url);
         setData(response.data);
       } catch (error) {
         setIsError(true);
@@ -119,17 +116,33 @@ export const useDeleteFetchData = <T>(url: string): FetchDataProps<T> => {
 // ------------------------------------------------------ //
 // ------------------- Lazy Fetch Datas ----------------- //
 // ------------------------------------------------------ //
+interface FetchLazyDataProps<T> {
+  data: T | null;
+  isLoading: boolean;
+  isError: boolean;
+  fetchData: ({ url, instance }: { url: string; instance: number }) => Promise<void>;
+}
 
 export const useLazyGetFetchData = <T>(): FetchLazyDataProps<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const fetchData = async (url: string) => {
+  const fetchData = async ({ url, instance }: { url: string; instance: number }) => {
     setIsLoading(true);
+    let instanceAxios = null;
+
+    if (instance === 1) {
+      instanceAxios = instannceApiBackend;
+    } else if (instance === 2) {
+      instanceAxios = instanceApiAddress;
+    } else {
+      setIsError(true);
+      return;
+    }
 
     try {
-      const response = await instannceApiBackend.get(url);
+      const response = await instanceAxios.get(`?q=${url}&type=housenumber&autocomplete=1`);
       setData(response.data);
     } catch (error) {
       setIsError(true);

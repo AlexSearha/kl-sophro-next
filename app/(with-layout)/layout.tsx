@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import useScreenDetect from '../lib/hooks/screen-detect';
 import AntThemeProvider from '../lib/providers/antThemeProvider';
 import ModalGeneric from '../ui/modal';
+import { Input } from 'antd';
 
 // export const metadata: Metadata = {
 //   title: {
@@ -37,7 +38,7 @@ export default function RootLayout({
       <AntThemeProvider>
         <html lang="fr">
           <body
-            className={`${roboto.className} antialiased bg-bgcolor-400 flex flex-col items-center w-full h-screen relative`}
+            className={`${roboto.className} antialiased bg-bgcolor-400 flex flex-col items-center h-screen relative`}
             suppressHydrationWarning={true}
           >
             {/* {isMonComptePresent && isMobileSize ? null : <Header />} */}

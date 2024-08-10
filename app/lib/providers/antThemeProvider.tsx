@@ -8,6 +8,11 @@ export default function AntThemeProvider({ children }: { children: React.ReactNo
         token: {
           colorPrimary: TailwindTheme.extend.colors.greena[400],
         },
+        components: {
+          Button: {
+            fontWeight: '700',
+          },
+        },
       }}
     >
       {children}

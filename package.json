@@ -10,6 +10,7 @@
     "autocomit": "git add . && git commit -m 'autocommit' && git push"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.4.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fortawesome/fontawesome-free": "^6.6.0",
@@ -40,7 +41,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }

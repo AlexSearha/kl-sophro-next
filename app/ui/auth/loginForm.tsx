@@ -3,11 +3,11 @@
 import { AlertErrorNotification, AlertSuccessNotification } from '@/app/ui/alerte-notification';
 import { useContext, useEffect, useRef } from 'react';
 import { lusitana } from '../fonts';
-import { useLazyPostFetchData } from '@/app/lib/hooks';
 import LoadingSubmitForm from '../contact/Loading';
 import Link from 'next/link';
 import { LoginFormResponse } from '@/app/types';
 import { authContext } from '@/app/(with-layout)/authentification/page';
+import { useLazyPostFetchData } from '@/app/lib/hooks/fetching-hooks';
 
 export default function LoginForm() {
   const { state, dispatch } = useContext(authContext);
@@ -33,9 +33,7 @@ export default function LoginForm() {
 
   return (
     <div className="w-full max-w-[500px] px-3 md:w-1/2">
-      <h1 className={`${lusitana.className} text-4xl font-bold mb-6 flex justify-center`}>
-        Connexion
-      </h1>
+      <h1 className={`${lusitana.className} text-4xl font-bold mb-6 flex justify-center`}>Connexion</h1>
 
       <form
         ref={formRef}
@@ -95,9 +93,7 @@ export default function LoginForm() {
         >
           {isLoading ? <LoadingSubmitForm /> : 'Se connecter'}
         </button>
-        {isError ? (
-          <AlertErrorNotification message="Une erreur s'est produite lors de la connexion" />
-        ) : null}
+        {isError ? <AlertErrorNotification message="Une erreur s'est produite lors de la connexion" /> : null}
         {data ? <AlertSuccessNotification message="Vous êtes connecté !" /> : null}
       </form>
     </div>

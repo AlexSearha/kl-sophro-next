@@ -1,181 +1,133 @@
-import { useLazyPostFetchData } from '@/app/lib/hooks';
-import { LoginFormResponse } from '@/app/types';
-import { use, useContext, useEffect, useRef } from 'react';
-import { lusitana } from '../fonts';
-import Link from 'next/link';
-import LoadingSubmitForm from '../contact/Loading';
-import { AlertErrorNotification, AlertSuccessNotification } from '../alerte-notification';
-import { authContext } from '@/app/(with-layout)/authentification/page';
+import React, { useEffect, useState } from 'react';
+import type { FormProps, InputRef } from 'antd';
+import { Button, Form, Input } from 'antd';
+import { useLazyGetFetchData } from '@/app/lib/hooks/fetching-hooks';
+import useDebounce from '@/app/lib/hooks/useDebounce';
+import { ApiAdressRoot } from '@/app/types';
 
-export default function SignupForm() {
-  const { state, dispatch } = useContext(authContext);
-  const formRef = useRef(null);
-  const { fetchData, isLoading, isError, data } = useLazyPostFetchData<LoginFormResponse>();
+type FieldType = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  address: string;
+};
 
-  async function loginUser(formData: FormData) {
-    const rowFormData = {
-      lastname: formData.get('lastname'),
-      firstname: formData.get('firstname'),
-      phone: formData.get('phone'),
-      email: formData.get('email'),
-      password: formData.get('password'),
-    };
+const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  console.log('Success:', values);
+};
 
-    if (rowFormData.email && rowFormData.password) {
-      fetchData('http://localhost:3001/client', rowFormData);
-    }
-  }
+const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
 
-  useEffect(() => {
-    if (data && formRef.current != null) {
-      (formRef.current as HTMLFormElement).reset();
-    }
-  }, [data, isError]);
-
-  {
-    /* TODO: Ajouter le AccessToken au headers */
-  }
-  useEffect(() => {
-    if (data && !isLoading) {
-      const accessToken = data.accessToken;
-
-      // redirect('/dashboard');
-    }
-  }, [data, isLoading]);
+const SignUpForm = () => {
+  const [searchAddress, setSearchAddress] = useState('');
+  const debounceValue = useDebounce(searchAddress, 500);
+  const { data, fetchData, isError, isLoading } = useLazyGetFetchData<ApiAdressRoot>();
 
   useEffect(() => {
-    console.log(state.signupRowFormData);
-  }, [state.signupRowFormData]);
+    if (debounceValue) {
+      fetchData({ url: `${searchAddress}&type=housenumber&autocomplete=1`, instance: 2 });
+    }
+  }, [debounceValue]);
+
+  useEffect(() => {
+    console.log('test', data);
+  }, [data]);
 
   return (
-    <div className="w-full max-w-[500px] px-3 md:w-1/2">
-      <h1
-        className={`${lusitana.className} text-4xl font-bold mb-6 flex justify-center`}
-      >{`S'enregistrer`}</h1>
-
-      <form
-        ref={formRef}
-        action={loginUser}
-        className="flex flex-col justify-center bg-white p-6 rounded-xl shadow-xl"
+    <>
+      <Form
+        name="basic"
+        labelCol={{ span: 2 }}
+        wrapperCol={{ span: 16 }}
+        style={{ maxWidth: 600 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+        className="bg-white rounded p-2"
       >
-        <div className="flex gap-2">
-          <div className="mb-4">
-            <label htmlFor="lastname" className={`${lusitana.className} block font-bold text-xl`}>
-              Nom
-            </label>
-            <input
-              type="text"
-              id="lastname"
-              name="lastname"
-              value={state.signupRowFormData.lastname}
-              onChange={(event) =>
-                dispatch({
-                  type: 'PUT-SIGNUP-DATA',
-                  payload: { value: event.target.value },
-                  fieldName: 'lastname',
-                })
-              }
-              placeholder="(ex: Durand)"
-              required
-              className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="firstname" className={`${lusitana.className} block font-bold text-xl`}>
-              Prénom
-            </label>
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              value={state.signupRowFormData.firstname}
-              onChange={(event) =>
-                dispatch({
-                  type: 'PUT-SIGNUP-DATA',
-                  payload: { value: event.target.value },
-                  fieldName: 'firstname',
-                })
-              }
-              placeholder="(ex: Marie)"
-              required
-              className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-            />
-          </div>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="phone" className={`${lusitana.className} block font-bold text-xl`}>
-            Téléphone
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={state.signupRowFormData.phone}
-            onChange={(event) =>
-              dispatch({
-                type: 'PUT-SIGNUP-DATA',
-                payload: { value: event.target.value },
-                fieldName: 'phone',
-              })
-            }
-            placeholder="(ex: 06123456789)"
-            required
-            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={state.signupRowFormData.email}
-            onChange={(event) =>
-              dispatch({
-                type: 'PUT-SIGNUP-DATA',
-                payload: { value: event.target.value },
-                fieldName: 'email',
-              })
-            }
-            placeholder="(ex: marie.durand@gmail.com)"
-            required
-            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className={`${lusitana.className} block font-bold text-xl`}>
-            Mot de passe
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={state.signupRowFormData.password}
-            onChange={(event) =>
-              dispatch({
-                type: 'PUT-SIGNUP-DATA',
-                payload: { value: event.target.value },
-                fieldName: 'password',
-              })
-            }
-            placeholder="(ex: ******)"
-            required
-            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-          />
-        </div>
-        <button
-          type="submit"
-          className="px-4 py-2 mb-2 bg-greena-400 text-white font-semibold rounded transition-all hover:bg-greena-500 focus:outline-none focus:ring focus:border-greena-400"
+        <Form.Item<FieldType>
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          {isLoading ? <LoadingSubmitForm /> : 'Créer un compte'}
-        </button>
-        {isError ? (
-          <AlertErrorNotification message="Une erreur s'est produite lors de la connexion" />
-        ) : null}
-        {data ? <AlertSuccessNotification message="Vous êtes connecté !" /> : null}
-      </form>
-    </div>
+          <Input type="primary" />
+        </Form.Item>
+
+        <Form.Item<FieldType>
+          label="Mot de passe"
+          name="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item<FieldType>
+          label="Prénom"
+          name="firstName"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input type="primary" />
+        </Form.Item>
+
+        <Form.Item<FieldType>
+          label="Nom"
+          name="lastName"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input type="primary" />
+        </Form.Item>
+
+        <Form.Item<FieldType>
+          label="Adresse"
+          name="address"
+          rules={[{ required: true, message: 'Merci de remplir ce champs' }]}
+        >
+          <Input
+            type="primary"
+            className="relative"
+            onChange={(event) => setSearchAddress(event.target.value)}
+          />
+          {data && (
+            <div className="absolute flex justify-center items-center bottom-0 left-0 translate-y-full z-10 w-full h-auto rounded bg-white border-2 border-black/15 ">
+              <ul>
+                {data.features.map((address, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="list-decimal hover:bg-slate-300 p-1 rounded"
+                      onClick={() => setSearchAddress(address.properties.label)}
+                    >
+                      {address.properties.label}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </Form.Item>
+
+        <Form.Item<FieldType>
+          label="Téléphone"
+          name="phoneNumber"
+          initialValue=""
+          rules={[{ required: false }]}
+        >
+          <Input type="primary" />
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
-}
+};
+
+export default SignUpForm;

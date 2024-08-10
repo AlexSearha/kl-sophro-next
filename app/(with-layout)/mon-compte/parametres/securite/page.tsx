@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, Form, Input } from 'antd';
+import { Button, ConfigProvider, Form, Input } from 'antd';
 import { lusitana } from '@/app/ui/fonts';
-import { TailwindTheme } from '@/tailwind.config';
+import { useModal } from '@/app/lib/providers/modalProvider';
+import DeleteModal from '@/app/ui/modals/DeleteModal';
 
 type FieldType = {
   password?: string;
@@ -19,6 +20,18 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 };
 
 const SecurityPage = () => {
+  const { dispatch } = useModal();
+  const handleDeleteAccount = () => {
+    dispatch({
+      type: 'update_modal',
+      payload: {
+        title: 'Suppression de compte',
+        content: (
+          <DeleteModal subTitle="Ceci entrainera une action irréversible qui effacera toutes vos données. Êtes-vous sûr de vouloir continuer ?" />
+        ),
+      },
+    });
+  };
   return (
     <div className="mb-32">
       {/* Password changing */}
@@ -60,12 +73,23 @@ const SecurityPage = () => {
           </Form.Item>
         </Form>
       </div>
+      <hr />
       {/* Delete account */}
-      <h2 className={`text-2xl text-greena-500 mt-8 text-center ${lusitana.className}`}>
-        Suppression du compte
-      </h2>
-      <div className="flex justify-center items-center">
-        <Button>Supprimer</Button>
+      <div className="flex flex-col gap-2 justify-center items-center">
+        <h2 className={`text-2xl text-greena-500 mt-8 text-center ${lusitana.className}`}>
+          Suppression du compte
+        </h2>
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#990000',
+            },
+          }}
+        >
+          <Button danger type="primary" onClick={handleDeleteAccount}>
+            Supprimer
+          </Button>
+        </ConfigProvider>
       </div>
     </div>
   );

@@ -115,3 +115,43 @@ export interface PaginateProps {
   currentPage: number;
   setCurrentPage: (page: number) => void;
 }
+
+// --------------------------------------------- //
+// ---------------ADDRESS API------------------- //
+// --------------------------------------------- //
+
+export interface ApiAdressRoot {
+  features: FeatureAddress[];
+}
+
+export interface FeatureAddress {
+  geometry: GeometryAddress;
+  properties: PropertiesAddress;
+}
+
+export interface GeometryAddress {
+  type: string;
+  coordinates: number[];
+}
+
+export interface PropertiesAddress {
+  label: string;
+  score: number;
+  housenumber: string;
+  id: string;
+  name: string;
+  postcode: string;
+  citycode: string;
+  x: number;
+  y: number;
+  city: string;
+  district: string;
+  context: string;
+  type: string;
+  importance: number;
+  street: string;
+}
+
+export interface Filters {
+  type: string;
+}

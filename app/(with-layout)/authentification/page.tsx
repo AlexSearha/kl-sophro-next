@@ -1,7 +1,7 @@
 'use client';
 
 import LoginForm from '@/app/ui/auth/loginForm';
-import SignupForm from '@/app/ui/auth/signupForm';
+import SignUpForm from '@/app/ui/auth/signupForm';
 import { lusitana } from '@/app/ui/fonts';
 import { Dispatch, createContext, useReducer, useState } from 'react';
 
@@ -87,12 +87,8 @@ export default function LoginPage() {
   const [state, dispatch] = useReducer(authReducer, initialState);
   const [isLogin, setIsLogin] = useState(true);
 
-  const buttonClass1 = isLogin
-    ? ' bg-greena-400 text-white '
-    : ' text-greena-400 hover:bg-slate-200';
-  const buttonClass2 = isLogin
-    ? ' text-greena-400 hover:bg-slate-200'
-    : ' bg-greena-400 text-white';
+  const buttonClass1 = isLogin ? ' bg-greena-400 text-white ' : ' text-greena-400 hover:bg-slate-200';
+  const buttonClass2 = isLogin ? ' text-greena-400 hover:bg-slate-200' : ' bg-greena-400 text-white';
 
   return (
     <authContext.Provider value={{ state, dispatch }}>
@@ -111,7 +107,7 @@ export default function LoginPage() {
             Inscription
           </button>
         </div>
-        {isLogin ? <LoginForm /> : <SignupForm />}
+        {isLogin ? <LoginForm /> : <SignUpForm />}
       </div>
     </authContext.Provider>
   );
