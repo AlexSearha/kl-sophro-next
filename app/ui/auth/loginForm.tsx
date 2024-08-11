@@ -1,101 +1,61 @@
-'use client';
+import React from 'react';
+import type { FormProps } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd';
 
-import { AlertErrorNotification, AlertSuccessNotification } from '@/app/ui/alerte-notification';
-import { useContext, useEffect, useRef } from 'react';
-import { lusitana } from '../fonts';
-import LoadingSubmitForm from '../contact/Loading';
-import Link from 'next/link';
-import { LoginFormResponse } from '@/app/types';
-import { authContext } from '@/app/(with-layout)/authentification/page';
-import { useLazyPostFetchData } from '@/app/lib/hooks/fetching-hooks';
+type FieldType = {
+  email?: string;
+  password?: string;
+  remember?: string;
+};
 
-export default function LoginForm() {
-  const { state, dispatch } = useContext(authContext);
-  const formRef = useRef(null);
-  const { fetchData, isLoading, isError, data } = useLazyPostFetchData<LoginFormResponse>();
+const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  console.log('Success:', values);
+};
 
-  async function loginUser(formData: FormData) {
-    const rowFormData = {
-      email: formData.get('email'),
-      password: formData.get('password'),
-    };
+const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
 
-    if (rowFormData.email && rowFormData.password) {
-      fetchData('http://localhost:3001/login', rowFormData);
-    }
-  }
+const LoginForm: React.FC = () => (
+  <Form
+    name="basic"
+    labelCol={{ span: 8 }}
+    wrapperCol={{ span: 16 }}
+    style={{ maxWidth: 350 }}
+    initialValues={{ remember: true }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete="off"
+    className="bg-white p-2 rounded"
+  >
+    <Form.Item<FieldType>
+      label="Email"
+      name="email"
+      className="md:mb-2 mb-0"
+      rules={[{ required: true, message: 'Please input your username!' }]}
+    >
+      <Input type="primary" />
+    </Form.Item>
 
-  useEffect(() => {
-    if (data && formRef.current != null) {
-      (formRef.current as HTMLFormElement).reset();
-    }
-  }, [data, isError]);
+    <Form.Item<FieldType>
+      label="Mot de passe"
+      name="password"
+      className="md:mb-2 mb-0"
+      rules={[{ required: true, message: 'Please input your password!' }]}
+    >
+      <Input.Password />
+    </Form.Item>
 
-  return (
-    <div className="w-full max-w-[500px] px-3 md:w-1/2">
-      <h1 className={`${lusitana.className} text-4xl font-bold mb-6 flex justify-center`}>Connexion</h1>
+    <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+      <Checkbox>Se souvenir de moi</Checkbox>
+    </Form.Item>
 
-      <form
-        ref={formRef}
-        action={loginUser}
-        className="flex flex-col justify-center bg-white p-6 rounded-xl shadow-xl"
-      >
-        <div className="mb-4">
-          <label htmlFor="email" className={`${lusitana.className} block font-bold text-xl`}>
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={state.loginRowFormData.email}
-            onChange={(event) =>
-              dispatch({
-                type: 'PUT-LOGIN-DATA',
-                payload: { value: event.target.value },
-                fieldName: 'email',
-              })
-            }
-            placeholder="(ex: marie.durand@gmail.com)"
-            required
-            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className={`${lusitana.className} block font-bold text-xl`}>
-            Mot de passe
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={state.loginRowFormData.password}
-            onChange={(event) =>
-              dispatch({
-                type: 'PUT-LOGIN-DATA',
-                payload: { value: event.target.value },
-                fieldName: 'password',
-              })
-            }
-            placeholder="(ex: ********)"
-            required
-            className="w-full px-3 py-2 mt-1 text-gray-800 border rounded-md focus:outline-none focus:ring focus:ring-greena-400 focus:border-greena-400"
-          />
-          <p>
-            <Link className="text-xs transition-all hover:text-greena-400" href="/motdepasseoublie">
-              Mot de passe oublié ?
-            </Link>
-          </p>
-        </div>
-        <button
-          type="submit"
-          className="px-4 py-2 mb-2 bg-greena-400 text-white font-semibold rounded transition-all hover:bg-greena-500 focus:outline-none focus:ring focus:border-greena-400"
-        >
-          {isLoading ? <LoadingSubmitForm /> : 'Se connecter'}
-        </button>
-        {isError ? <AlertErrorNotification message="Une erreur s'est produite lors de la connexion" /> : null}
-        {data ? <AlertSuccessNotification message="Vous êtes connecté !" /> : null}
-      </form>
-    </div>
-  );
-}
+    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Button type="primary" htmlType="submit">
+        Se connecter
+      </Button>
+    </Form.Item>
+  </Form>
+);
+
+export default LoginForm;

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import type { FormProps } from 'antd';
-import { Button, ConfigProvider, Form, Input } from 'antd';
+import { Button, ConfigProvider, Divider, Form, Input } from 'antd';
 import { lusitana } from '@/app/ui/fonts';
 import { useModal } from '@/app/lib/providers/modalProvider';
 import DeleteModal from '@/app/ui/modals/DeleteModal';
@@ -35,11 +35,11 @@ const SecurityPage = () => {
   return (
     <div className="mb-32">
       {/* Password changing */}
-      <h1 id="parameter-title" className={`text-4xl text-center text-greena-500 ${lusitana.className}`}>
+      <h1 id="parameter-title" className={`text-4xl text-center text-greena-500 mb-8 ${lusitana.className}`}>
         Parametres
       </h1>
-      <h2 className={`text-2xl text-greena-500 mt-8 ${lusitana.className}`}>Modification du mot de passe</h2>
-      <div id="form-content" className="flex justify-center mt-6">
+      <h2 className={`text-2xl text-greena-500 ${lusitana.className}`}>Modification du mot de passe</h2>
+      <div id="form-content" className="flex justify-center mt-6 bg-white rounded p-2">
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -73,10 +73,10 @@ const SecurityPage = () => {
           </Form.Item>
         </Form>
       </div>
-      <hr />
+      <Divider />
       {/* Delete account */}
       <div className="flex flex-col gap-2 justify-center items-center">
-        <h2 className={`text-2xl text-greena-500 mt-8 text-center ${lusitana.className}`}>
+        <h2 className={`text-2xl text-greena-500 mt-2 text-center ${lusitana.className}`}>
           Suppression du compte
         </h2>
         <ConfigProvider

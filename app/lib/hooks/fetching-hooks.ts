@@ -120,16 +120,19 @@ interface FetchLazyDataProps<T> {
   data: T | null;
   isLoading: boolean;
   isError: boolean;
+  isSuccess: boolean;
   fetchData: ({ url, instance }: { url: string; instance: number }) => Promise<void>;
 }
 
 export const useLazyGetFetchData = <T>(): FetchLazyDataProps<T> => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const fetchData = async ({ url, instance }: { url: string; instance: number }) => {
     setIsLoading(true);
+    setIsSuccess(false);
     let instanceAxios = null;
 
     if (instance === 1) {
@@ -143,6 +146,7 @@ export const useLazyGetFetchData = <T>(): FetchLazyDataProps<T> => {
 
     try {
       const response = await instanceAxios.get(`?q=${url}&type=housenumber&autocomplete=1`);
+      setIsSuccess(true);
       setData(response.data);
     } catch (error) {
       setIsError(true);
@@ -152,7 +156,7 @@ export const useLazyGetFetchData = <T>(): FetchLazyDataProps<T> => {
     }
   };
 
-  return { data, isLoading, isError, fetchData };
+  return { data, isLoading, isError, isSuccess, fetchData };
 };
 
 export const useLazyPostFetchData = <T>(): FetchLazyPostDataProps<T> => {
