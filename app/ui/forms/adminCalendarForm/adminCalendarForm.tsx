@@ -1,10 +1,14 @@
 import React from 'react';
-import { DatePicker, Space } from 'antd';
-import type { GetProps } from 'antd';
+import { Button, DatePicker, Form, Space } from 'antd';
+import type { GetProps, FormProps } from 'antd';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
+
+type FieldType = {
+  date?: string;
+};
 
 dayjs.extend(customParseFormat);
 
@@ -31,18 +35,45 @@ const disabledDateTime = () => ({
   // disabledMinutes: () => range(30, 60),
 });
 
+const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  console.log('Success:', values);
+};
+
+const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
 const AdminCalendarForm: React.FC = () => (
-  <Space direction="vertical" size={12}>
-    <DatePicker
-      format="le ddd DD,MM YYYY à HH:mm"
-      className="w-[350px]"
-      size="large"
-      disabledDate={disabledDate}
-      disabledTime={disabledDateTime}
-      minuteStep={30}
-      showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm') }}
-    />
-  </Space>
+  <Form
+    name="basic"
+    labelCol={{ span: 2 }}
+    wrapperCol={{ span: 16 }}
+    initialValues={{ remember: true }}
+    className="w-[350px] p-2 bg-white rounded"
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete="off"
+  >
+    <Form.Item<FieldType>
+      name="date"
+      rules={[{ required: true, message: 'Choisir une date de rendez-vous' }]}
+    >
+      <DatePicker
+        format="le ddd DD,MM YYYY à HH:mm"
+        className="w-full"
+        size="large"
+        disabledDate={disabledDate}
+        disabledTime={disabledDateTime}
+        minuteStep={30}
+        showTime={{ defaultValue: dayjs('00:00:00', 'HH:mm') }}
+      />
+    </Form.Item>
+
+    <Form.Item className="mb-2" wrapperCol={{ offset: 8, span: 16 }}>
+      <Button type="primary" htmlType="submit">
+        Reserver
+      </Button>
+    </Form.Item>
+  </Form>
 );
 
 export default AdminCalendarForm;
