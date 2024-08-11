@@ -23,7 +23,9 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 const MesInformationsPage = () => {
   return (
     <>
-      <h1 className={`text-3xl text-center ${lusitana.className} text-greena-500 mb-8`}>Mes Informations</h1>
+      <h1 className={`text-3xl flex justify-center ${lusitana.className} text-greena-500 mb-8`}>
+        Mes Informations
+      </h1>
       <Form
         name="basic"
         labelCol={{ span: 2 }}

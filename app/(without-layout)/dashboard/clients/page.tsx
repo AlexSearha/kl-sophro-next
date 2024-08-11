@@ -4,13 +4,15 @@ import ClientListItem from '@/app/ui/clients/ClientListItem';
 import { lusitana } from '@/app/ui/fonts';
 import { ClientProps } from '@/app/types';
 import PaginationElement from '@/app/ui/pagination';
+import useScreenDetect from '@/app/lib/hooks/screen-detect';
 
 export default function ClientsSearchPage() {
   const [searchText, setSearchText] = useState('');
+  const isMobileSize = useScreenDetect();
   const [filteredClients, setFilteredClients] = useState<ClientProps[]>([]);
   // pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 15;
+  const postsPerPage = 5;
 
   {
     /**  TODO: Remplacer les datas en dur par un fetch */
@@ -343,10 +345,7 @@ export default function ClientsSearchPage() {
   // Get current clients
   const indexOfLastClients = currentPage * postsPerPage;
   const indexOfFirstClients = indexOfLastClients - postsPerPage;
-  const currentClients = filteredClients.slice(
-    indexOfFirstClients,
-    indexOfLastClients
-  );
+  const currentClients = filteredClients.slice(indexOfFirstClients, indexOfLastClients);
 
   useEffect(() => {
     const filteredClients = clients.filter(
@@ -361,17 +360,12 @@ export default function ClientsSearchPage() {
 
   return (
     <>
-      <h1
-        id="mainTitle"
-        className={`${lusitana.className} text-4xl text-greena-500 font-bold`}
-      >
+      <h1 id="mainTitle" className={`${lusitana.className} text-4xl text-greena-500 font-bold`}>
         Clients
       </h1>
       <div className="mt-4">
-        <div className="flex justify-between mx-2">
-          <h2 className={`${lusitana.className} text-3xl mb-3`}>
-            Liste des clients
-          </h2>
+        <div className="flex flex-col md:flex-row justify-between mx-2">
+          <h2 className={`${lusitana.className} text-3xl mb-3`}>Liste des clients</h2>
           <input
             type="text"
             placeholder="Recherche"
@@ -380,32 +374,20 @@ export default function ClientsSearchPage() {
             onChange={(event) => setSearchText(event.target.value)}
             id="search"
             name="search"
-            className="focus:ring-greena-400 focus:border-greena-400 rounded"
+            className="focus:ring-greena-400 focus:border-greena-400 rounded h-10"
           />
         </div>
-        <div className="flex justify-center mt-4">
-          <table id="client-table" className="w-full mb-2">
-            <thead>
-              <tr className="text-greena-400 text-xl">
-                <th scope="col">Nom</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">Email</th>
-                <th scope="col">Télephone</th>
-              </tr>
-            </thead>
-            <tbody className="mt-2 [&>*:nth-child(2n)]:bg-greena-400/10">
-              {currentClients.map((client) => (
-                <ClientListItem
-                  key={client.id}
-                  id={client.id}
-                  email={client.email}
-                  firstname={client.firstname}
-                  lastname={client.lastname}
-                  phone={client.phone}
-                />
-              ))}
-            </tbody>
-          </table>
+        <div className="flex flex-col justify-center mt-4 gap-2">
+          {currentClients.map((client) => (
+            <ClientListItem
+              key={client.id}
+              id={client.id}
+              email={client.email}
+              firstname={client.firstname}
+              lastname={client.lastname}
+              phone={client.phone}
+            />
+          ))}
         </div>
         <PaginationElement
           postsPerPage={postsPerPage}

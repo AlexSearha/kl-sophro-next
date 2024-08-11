@@ -2,24 +2,14 @@ import React from 'react';
 import { Pagination } from 'antd';
 import { PaginateProps } from '../types';
 
-const PaginationElement = ({
-  postsPerPage,
-  totalPosts,
-  currentPage,
-  setCurrentPage,
-}: PaginateProps) => {
+const PaginationElement = ({ postsPerPage, totalPosts, currentPage, setCurrentPage }: PaginateProps) => {
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
 
   return (
-    <div className="pagination">
-      <Pagination
-        current={currentPage}
-        pageSize={postsPerPage}
-        total={totalPosts}
-        onChange={onPageChange}
-      />
+    <div className="pagination mt-4">
+      <Pagination current={currentPage} pageSize={postsPerPage} total={totalPosts} onChange={onPageChange} />
     </div>
   );
 };

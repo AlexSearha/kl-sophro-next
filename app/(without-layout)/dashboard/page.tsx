@@ -82,8 +82,7 @@ const appointments = [
 
 export default function DashboardPage() {
   const [searchText, setSearchText] = useState('');
-  const [filteredAppointments, setFilteredAppointments] =
-    useState(appointments);
+  const [filteredAppointments, setFilteredAppointments] = useState(appointments);
   const [openModal, setOpenModal] = useState(false);
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
@@ -92,10 +91,7 @@ export default function DashboardPage() {
   // Get current posts
   const indexOfLastAppointments = currentPage * postsPerPage;
   const indexOfFirstAppointments = indexOfLastAppointments - postsPerPage;
-  const currentAppointments = filteredAppointments.slice(
-    indexOfFirstAppointments,
-    indexOfLastAppointments
-  );
+  const currentAppointments = filteredAppointments.slice(indexOfFirstAppointments, indexOfLastAppointments);
 
   useEffect(() => {
     const filtered = appointments.filter((appointment) => {
@@ -109,17 +105,12 @@ export default function DashboardPage() {
 
   return (
     <>
-      <h1
-        id="mainTitle"
-        className={`${lusitana.className} text-4xl text-greena-500 font-bold`}
-      >
+      <h1 id="mainTitle" className={`${lusitana.className} text-4xl text-greena-500 font-bold`}>
         Dashboard
       </h1>
       <div className="mt-4">
         <div className="flex justify-between mx-2">
-          <h2 className={`${lusitana.className} text-3xl mb-3`}>
-            Mes prochains rendez-vous
-          </h2>
+          <h2 className={`${lusitana.className} text-3xl mb-3`}>Mes prochains rendez-vous</h2>
           <input
             id="search"
             name="search"
