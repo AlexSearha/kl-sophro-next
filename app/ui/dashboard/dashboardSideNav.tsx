@@ -32,7 +32,7 @@ export default function DashboardSideNav() {
 
   return (
     <div className="flex flex-col h-full ">
-      <Link href="/">
+      <Link className="w-full flex justify-center items-center my-4" href="/">
         <Image src={Logo} priority={true} width={250} height={250} alt="Logo de Katia Lemaire Sophrologue" />
       </Link>
       <nav className="my-4 grow flex justify-center items-center">
