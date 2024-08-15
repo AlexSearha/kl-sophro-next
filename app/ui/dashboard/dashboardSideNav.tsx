@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Tooltip } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faGear } from '@fortawesome/free-solid-svg-icons';
 import useScreenDetect from '@/app/lib/hooks/screen-detect';
 
 export default function DashboardSideNav() {
@@ -35,7 +35,7 @@ export default function DashboardSideNav() {
       <Link className="w-full flex justify-center items-center my-4" href="/">
         <Image src={Logo} priority={true} width={250} height={250} alt="Logo de Katia Lemaire Sophrologue" />
       </Link>
-      <nav className="my-4 grow flex justify-center items-center">
+      <nav className="my-2 grow flex justify-center items-center">
         <ul className="flex md:flex-col gap-3 justify-center items-center text-xl text-white">
           <li
             className={`transition-all ${
@@ -79,6 +79,15 @@ export default function DashboardSideNav() {
           className={`absolute ${
             isMobileSize ? 'top-0' : 'bottom-0'
           } right-0  p-4 text-white transition-colors hover:text-slate-300 cursor-pointer`}
+        />
+      </Tooltip>
+      <Tooltip title="Parametres">
+        <FontAwesomeIcon
+          icon={faGear}
+          size="xl"
+          className={`absolute ${
+            isMobileSize ? 'top-0 right-10' : 'bottom-0 left-0'
+          } p-4 text-white transition-colors hover:text-slate-300 cursor-pointer`}
         />
       </Tooltip>
     </div>

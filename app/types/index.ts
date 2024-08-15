@@ -67,74 +67,66 @@ interface UserProps {
 }
 
 // Card rendez-vous Props
-export interface CarRendezVousProps {
-  date: string;
-  fullName: string;
-  address: string;
-  id: number;
-  openModal: boolean;
-  setOpenModal: Dispatch<SetStateAction<boolean>>;
-}
 
-export interface ClientListItemProps {
+export type ClientListItemProps = {
   lastname: string;
   firstname: string;
   email: string;
   phone: string;
   id: number;
-}
+};
 
-export interface CalendareElementProps {
+export type CalendareElementProps = {
   setDateValue: Dispatch<SetStateAction<Date | null | undefined>>;
-}
+};
 
 // ADMIN Client list
-export interface ClientProps {
+export type ClientProps = {
   id: number;
   lastname: string;
   firstname: string;
   email: string;
   phone: string;
-}
+};
 
-export interface ClientDossierProps {
+export type ClientDossierProps = {
   id: number;
   lastName: string;
   firstName: string;
   protocol: string;
-}
+};
 
 // Providers
 export type adminReducerInitialValuesProps = {
   openModal: boolean;
 };
 
-export interface PaginateProps {
+export type PaginateProps = {
   postsPerPage: number;
   totalPosts: number;
   currentPage: number;
   setCurrentPage: (page: number) => void;
-}
+};
 
 // --------------------------------------------- //
 // ---------------ADDRESS API------------------- //
 // --------------------------------------------- //
 
-export interface ApiAdressRoot {
+export type ApiAdressRoot = {
   features: FeatureAddress[];
-}
+};
 
-export interface FeatureAddress {
+export type FeatureAddress = {
   geometry: GeometryAddress;
   properties: PropertiesAddress;
-}
+};
 
-export interface GeometryAddress {
+export type GeometryAddress = {
   type: string;
   coordinates: number[];
-}
+};
 
-export interface PropertiesAddress {
+export type PropertiesAddress = {
   label: string;
   score: number;
   housenumber: string;
@@ -150,8 +142,8 @@ export interface PropertiesAddress {
   type: string;
   importance: number;
   street: string;
-}
+};
 
-export interface Filters {
+export type Filters = {
   type: string;
-}
+};

@@ -3,6 +3,8 @@
 import CardRendezVous from '@/app/ui/dashboard/cardRendezVous';
 import { lusitana } from '@/app/ui/fonts';
 import PaginationElement from '@/app/ui/pagination';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const appointments = [
@@ -93,6 +95,9 @@ export default function DashboardPage() {
   const indexOfFirstAppointments = indexOfLastAppointments - postsPerPage;
   const currentAppointments = filteredAppointments.slice(indexOfFirstAppointments, indexOfLastAppointments);
 
+  const pathName = usePathname();
+  const router = useRouter();
+
   useEffect(() => {
     const filtered = appointments.filter((appointment) => {
       return (
@@ -109,8 +114,8 @@ export default function DashboardPage() {
         Dashboard
       </h1>
       <div className="mt-4">
-        <div className="flex justify-between mx-2">
-          <h2 className={`${lusitana.className} text-3xl mb-3`}>Mes prochains rendez-vous</h2>
+        <div className="flex flex-col md:flex-row justify-between items-start">
+          <h2 className={`${lusitana.className} text-3xl`}>Mes prochains rendez-vous</h2>
           <input
             id="search"
             name="search"
@@ -119,19 +124,18 @@ export default function DashboardPage() {
             value={searchText}
             placeholder="Recherche"
             onChange={(event) => setSearchText(event.target.value)}
-            className="focus:ring-greena-400 focus:border-greena-400 rounded"
+            className="focus:ring-greena-400 focus:border-greena-400 rounded max-h-12 w-full md:max-w-64"
           />
         </div>
-        <div id="card-container" className="flex flex-col w-full">
+        <div id="card-container" className="flex flex-col w-full gap-2 mt-4">
           {currentAppointments.map((appointment) => (
             <CardRendezVous
               key={appointment.id}
+              title={appointment.fullname}
               id={appointment.id}
-              date={appointment.date}
-              fullName={appointment.fullname}
-              address={appointment.address}
-              openModal={openModal}
-              setOpenModal={setOpenModal}
+              firstIcon={faEye}
+              firstSubtitle={appointment.date}
+              firstIconAction={() => router.push(`${pathName}/coucou`)}
             />
           ))}
         </div>
