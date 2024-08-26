@@ -79,8 +79,8 @@ export interface CarRendezVousProps {
 export interface ClientListItemProps {
   lastname: string;
   firstname: string;
-  email: string;
-  phone: string;
+  email?: string;
+  phone?: string;
   id: number;
 }
 

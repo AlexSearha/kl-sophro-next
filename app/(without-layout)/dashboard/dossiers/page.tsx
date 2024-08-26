@@ -2,8 +2,8 @@
 import { ClientDossierProps } from '@/app/types';
 import { lusitana } from '@/app/ui/fonts';
 import PaginationElement from '@/app/ui/pagination';
-import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/20/solid';
 import { useEffect, useState } from 'react';
+import ClientFolderItem from '@/app/ui/clients/ClientFolderItem';
 
 export default function DossiersPage({ params }: { params: { slug: string } }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -12,7 +12,7 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
 
   // pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 15;
+  const postsPerPage = 8;
 
   const clients = [
     {
@@ -158,19 +158,11 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
   return (
     <>
       <h1 id="mainTitle" className={`${lusitana.className} text-4xl text-greena-500 font-bold`}>
-        Dossiers Page
+        Dossiers
       </h1>
-      <div id="folder-container" className="h-full mt-6">
-        <div id="folder-crudBar" className="flex justify-between w-full">
-          <button
-            onClick={() => handleAddNewFolder()}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="flex justify-end items-center border-2 border-greena-500 text-greena-500 p-2 rounded transition-colors hover:bg-greena-500"
-          >
-            <PlusIcon className={`h-7 w-7 ${isHovered ? 'text-white' : ''}`} />
-            <p className={`font-bold ${isHovered ? 'text-white' : ''}`}>Ajouter</p>
-          </button>
+      <div className="mt-4">
+        <div className="flex flex-col md:flex-row justify-between mx-2">
+          <h2 className={`${lusitana.className} text-3xl mb-3`}>Liste des dossiers</h2>
           <input
             type="text"
             placeholder="Recherche"
@@ -179,33 +171,18 @@ export default function DossiersPage({ params }: { params: { slug: string } }) {
             onChange={(event) => setSearchText(event.target.value)}
             id="search"
             name="search"
-            className="focus:ring-greena-400 focus:border-greena-400 rounded"
+            className="focus:ring-greena-400 focus:border-greena-400 rounded h-10"
           />
         </div>
-        <div className="flex justify-center mt-4">
-          <table id="client-table" className="w-full mb-2">
-            <thead>
-              <tr className="text-greena-400 text-xl">
-                <th scope="col">ID</th>
-                <th scope="col">Client</th>
-                <th scope="col">Protocole</th>
-              </tr>
-            </thead>
-            <tbody className="mt-2 [&>*:nth-child(2n)]:bg-greena-400/10">
-              {currentClients.map((client, index) => (
-                <tr
-                  key={index}
-                  className="transition-all cursor-pointer hover:bg-slate-200 text-center hover:ring-1 hover:ring-slate-300"
-                >
-                  <td>{client.id}</td>
-                  <td>
-                    {client.firstName} {client.lastName}
-                  </td>
-                  <td>{client.protocol}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex flex-col justify-center mt-4 gap-2">
+          {currentClients.map((client) => (
+            <ClientFolderItem
+              key={client.id}
+              id={client.id}
+              firstname={client.firstName}
+              lastname={client.lastName}
+            />
+          ))}
         </div>
         <PaginationElement
           postsPerPage={postsPerPage}

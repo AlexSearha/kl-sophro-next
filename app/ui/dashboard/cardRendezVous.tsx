@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { CarRendezVousProps } from '@/app/types';
-import { TrashIcon } from '@heroicons/react/20/solid';
-import { PencilSquareIcon } from '@heroicons/react/20/solid';
 import { useModal } from '@/app/lib/providers/modalProvider';
 import DeleteModal from '../modals/DeleteModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,7 +29,7 @@ export default function CardRendezVous({ ...props }: CarRendezVousProps) {
 
   return (
     <>
-      <div className="flex border-2 border-black/15 h-[100px] shadow px-4 py-2 m-2">
+      <div className="flex border-2 border-black/15 h-[100px] bg-white shadow px-4 py-2 m-2">
         <div className="flex justify-between items-center w-full">
           <div id="card-infos">
             <h3 id="card-infos__date" className="text-xl text-greena-400 font-bold italic">

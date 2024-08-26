@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <div className={`w-full flex-col h-1/3 md:h-full bg-greena-500 md:w-64 md:p-12 relative`}>
               <DashboardSideNav />
             </div>
-            <div className="flex-grow p-6 md:p-12 md:overflow-auto flex flex-col justify-center">
+            <div className="flex-grow p-6 md:p-12 md:overflow-auto flex flex-col justify-start">
               {children}
             </div>
           </div>

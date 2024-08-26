@@ -12,7 +12,7 @@ export default function ClientsSearchPage() {
   const [filteredClients, setFilteredClients] = useState<ClientProps[]>([]);
   // pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5;
+  const postsPerPage = 4;
 
   {
     /**  TODO: Remplacer les datas en dur par un fetch */
